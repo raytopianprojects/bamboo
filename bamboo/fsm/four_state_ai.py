@@ -5,7 +5,7 @@ __all__ = ['FourStateAI']
 from direct.directnotify import DirectNotifyGlobal
 # import DistributedObjectAI
 from . import ClassicFSM
-from . import State
+from . import state
 from direct.task import Task
 
 

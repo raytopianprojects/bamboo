@@ -9,5 +9,5 @@ See the :ref:`loading-actors-and-animations` page in the Programming Guide
 to learn more about loading animated models.
 """
 
-from .Actor import Actor
-from .DistributedActor import DistributedActor
+from .actor import Actor
+from .distributed_actor import DistributedActor

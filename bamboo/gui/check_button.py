@@ -1,25 +1,23 @@
-"""A RadioButton is a type of button that, similar to a
-CheckButton, has a separate indicator and can be toggled between
-two states.  However, only one RadioButton in a group can be enabled
-at a particular time.
+"""A CheckButton is a type of button that toggles between two states
+when clicked.  It also has a separate indicator that can be modified
+separately.
 
-See the :ref:`directradiobutton` page in the programming manual for a more
+See the :ref:`directcheckbutton` page in the programming manual for a more
 in-depth explanation and an example of how to use this class.
 """
 
-__all__ = ['RadioButton']
+__all__ = ['CheckButton']
 
 from panda3d.core import *
-from bamboo.gui import DirectGuiGlobals as DGG
-from bamboo.gui.Button import *
-from bamboo.gui.Label import *
+from bamboo.gui.button import *
+from bamboo.gui.label import *
 
 
-class RadioButton(Button):
+class CheckButton(Button):
     """
-    RadioButton(parent) - Create a DirectGuiWidget which responds
-    to mouse clicks by setting given value to given variable and
-    execute a callback function (passing that state through) if defined
+    CheckButton(parent) - Create a DirectGuiWidget which responds
+    to mouse clicks by setting a state of on or off and execute a callback
+    function (passing that state through) if defined
     """
 
     def __init__(self, parent=None, **kw):
@@ -38,24 +36,14 @@ class RadioButton(Button):
         self.colors = None
         optiondefs = (
             ('indicatorValue', 0, self.setIndicatorValue),
-            # variable is a list whose value will be set by this radio button
-            ('variable', [], None),
-            # value is the value to be set when this radio button is selected
-            ('value', [], None),
-            # others is a list of other radio buttons sharing same variable
-            ('others', [], None),
             # boxBorder defines the space created around the check box
             ('boxBorder', 0, None),
             # boxPlacement maps left, above, right, below
             ('boxPlacement', 'left', None),
-            # boxGeom defines geom to indicate current radio button is selected or not
-            ('boxGeom', None, None),
-            ('boxGeomColor', None, None),
-            ('boxGeomScale', 1.0, None),
             ('boxImage', None, None),
-            ('boxImageScale', 1.0, None),
-            ('boxImageColor', VBase4(1, 1, 1, 1), None),
-            ('boxRelief', None, None),
+            ('boxImageScale', 1, None),
+            ('boxImageColor', None, None),
+            ('boxRelief', 'sunken', None),
         )
         # Merge keyword options with default options
         self.defineoptions(kw, optiondefs)
@@ -67,38 +55,22 @@ class RadioButton(Button):
                                                image=self['boxImage'],
                                                image_scale=self['boxImageScale'],
                                                image_color=self['boxImageColor'],
-                                               geom=self['boxGeom'],
-                                               geom_scale=self['boxGeomScale'],
-                                               geom_color=self['boxGeomColor'],
                                                state='disabled',
                                                text=('X', 'X'),
                                                relief=self['boxRelief'],
                                                )
 
         # Call option initialization functions
-        self.initialiseoptions(RadioButton)
+        self.initialiseoptions(CheckButton)
         # After initialization with X giving it the correct size, put back space
-        if self['boxGeom'] is None:
-            if not 'boxRelief' in kw and self['boxImage'] is None:
-                self.indicator['relief'] = DGG.SUNKEN
+        if self['boxImage'] == None:
             self.indicator['text'] = (' ', '*')
-            self.indicator['text_pos'] = (0, -.25)
+            self.indicator['text_pos'] = (0, -.2)
         else:
             self.indicator['text'] = (' ', ' ')
-
-        if self['boxGeomColor'] != None and self['boxGeom'] != None:
-            self.colors = [VBase4(1, 1, 1, 0), self['boxGeomColor']]
-            self.component('indicator')['geom_color'] = VBase4(1, 1, 1, 0)
-
-        needToCheck = True
-        if len(self['value']) == len(self['variable']) != 0:
-            for i in range(len(self['value'])):
-                if self['variable'][i] != self['value'][i]:
-                    needToCheck = False
-                    break
-
-        if needToCheck:
-            self.check()
+        if self['boxImageColor'] != None and self['boxImage'] != None:
+            self.colors = [VBase4(0, 0, 0, 0), self['boxImageColor']]
+            self.component('indicator')['image_color'] = VBase4(0, 0, 0, 0)
 
     # Override the resetFrameSize of DirectGuiWidget inorder to provide space for label
     def resetFrameSize(self):
@@ -201,34 +173,17 @@ class RadioButton(Button):
             self.indicator.setPos(newpos[0], newpos[1], newpos[2])
 
     def commandFunc(self, event):
-        if len(self['value']) == len(self['variable']) != 0:
-            for i in range(len(self['value'])):
-                self['variable'][i] = self['value'][i]
-        self.check()
-
-    def check(self):
-        self['indicatorValue'] = 1
-        self.setIndicatorValue()
-
-        for other in self['others']:
-            if other != self:
-                other.uncheck()
+        self['indicatorValue'] = 1 - self['indicatorValue']
+        if self.colors != None:
+            self.component('indicator')[
+                'image_color'] = self.colors[self['indicatorValue']]
 
         if self['command']:
             # Pass any extra args to command
-            self['command'](*self['extraArgs'])
-
-    def setOthers(self, others):
-        self['others'] = others
-
-    def uncheck(self):
-        self['indicatorValue'] = 0
-        if self.colors != None:
-            self.component('indicator')[
-                'geom_color'] = self.colors[self['indicatorValue']]
+            self['command'](*[self['indicatorValue']] + self['extraArgs'])
 
     def setIndicatorValue(self):
         self.component('indicator').guiItem.setState(self['indicatorValue'])
         if self.colors != None:
             self.component('indicator')[
-                'geom_color'] = self.colors[self['indicatorValue']]
+                'image_color'] = self.colors[self['indicatorValue']]

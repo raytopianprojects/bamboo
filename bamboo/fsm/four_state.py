@@ -4,7 +4,7 @@ __all__ = ['FourState']
 
 from direct.directnotify import DirectNotifyGlobal
 # import DistributedObject
-from . import State
+from . import state
 
 
 class FourState:

@@ -11,9 +11,9 @@ __all__ = [
 
 from panda3d.core import *
 from direct.showbase import ShowBaseGlobal
-from bamboo.gui import DirectGuiGlobals as DGG
-from bamboo.gui.Frame import *
-from bamboo.gui.Button import *
+from bamboo.gui import gui_globals as DGG
+from bamboo.gui.frame import *
+from bamboo.gui.button import *
 import types
 
 

@@ -16,7 +16,7 @@ from panda3d.core import Material, LRotationf, NodePath
 from panda3d.core import AmbientLight, DirectionalLight
 from panda3d.core import TextNode
 from panda3d.core import LVector3, BitMask32
-from bamboo.gui.OnscreenText import OnscreenText
+from bamboo.gui.onscreen_text import OnscreenText
 from bamboo.interval.MetaInterval import Sequence, Parallel
 from bamboo.interval.LerpInterval import LerpFunc
 from bamboo.interval.FunctionInterval import Func, Wait

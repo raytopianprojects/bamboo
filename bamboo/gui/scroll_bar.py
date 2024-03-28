@@ -7,9 +7,9 @@ in-depth explanation and an example of how to use this class.
 __all__ = ['ScrollBar']
 
 from panda3d.core import *
-from bamboo.gui import DirectGuiGlobals as DGG
-from bamboo.gui.Frame import *
-from bamboo.gui.Button import *
+from bamboo.gui import gui_globals as DGG
+from bamboo.gui.frame import *
+from bamboo.gui.button import *
 
 """
 import ScrollBar

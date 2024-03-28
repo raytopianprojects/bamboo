@@ -7,7 +7,7 @@ explanation and an example of how to use this class.
 __all__ = ['Label']
 
 from panda3d.core import *
-from bamboo.gui.Frame import *
+from bamboo.gui.frame import *
 
 
 class Label(Frame):

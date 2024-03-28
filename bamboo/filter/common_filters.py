@@ -16,14 +16,14 @@ These filters are written in the Cg shading language.
 # that framework is.  Until then, I'll settle for this
 # clunky approach.  - Josh
 
-from .FilterManager import FilterManager
-from .filterBloomI import BLOOM_I
-from .filterBloomX import BLOOM_X
-from .filterBloomY import BLOOM_Y
-from .filterBlurX import BLUR_X
-from .filterBlurY import BLUR_Y
-from .filterCopy import COPY
-from .filterDown4 import DOWN_4
+from .filter_manager import FilterManager
+from .filter_bloom_i import BLOOM_I
+from .filter_bloom_x import BLOOM_X
+from .filter_bloom_y import BLOOM_Y
+from .filter_blur_x import BLUR_X
+from .filter_blur_y import BLUR_Y
+from .filter_copy import COPY
+from .filter_down4 import DOWN_4
 from panda3d.core import LVecBase4, LPoint2
 from panda3d.core import Filename
 from panda3d.core import AuxBitplaneAttrib, AntialiasAttrib

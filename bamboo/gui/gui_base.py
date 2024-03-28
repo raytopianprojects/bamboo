@@ -90,10 +90,10 @@ __all__ = ['DirectGuiBase', 'DirectGuiWidget']
 from panda3d.core import *
 from bamboo.showbase import ShowBaseGlobal
 from bamboo.showbase.ShowBase import ShowBase
-import bamboo.gui.DirectGuiGlobals as DGG
-from bamboo.gui.OnscreenText import *
-from bamboo.gui.OnscreenGeom import *
-from bamboo.gui.OnscreenImage import *
+import bamboo.gui.gui_globals as DGG
+from bamboo.gui.onscreen_text import *
+from bamboo.gui.onscreen_geom import *
+from bamboo.gui.onscreen_image import *
 from bamboo.directtools.DirectUtil import ROUND_TO
 from bamboo.showbase import DirectObject
 from bamboo.task import Task

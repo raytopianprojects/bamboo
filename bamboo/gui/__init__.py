@@ -11,20 +11,20 @@ single module as follows::
    from direct.gui.DirectGui import *
 """
 
-from bamboo.gui.OnscreenText import OnscreenText as Text
-from bamboo.gui.OnscreenGeom import OnscreenGeom
-from bamboo.gui.OnscreenImage import OnscreenImage as Image
-from bamboo.gui.Frame import Frame
-from bamboo.gui.Button import Button
-from bamboo.gui.Entry import Entry
-from bamboo.gui.EntryScroll import EntryScroll
-from bamboo.gui.Label import Label
-from bamboo.gui.ScrolledList import ScrolledList
-from bamboo.gui.Dialog import Dialog, YesNoDialog, YesNoCancelDialog
-from bamboo.gui.WaitBar import WaitBar
-from bamboo.gui.Slider import Slider
-from bamboo.gui.ScrollBar import ScrollBar
-from bamboo.gui.ScrolledFrame import ScrolledFrame
-from bamboo.gui.CheckButton import CheckButton
-from bamboo.gui.OptionMenu import OptionMenu
-from bamboo.gui.RadioButton import RadioButton
+from bamboo.gui.onscreen_text import OnscreenText as Text
+from bamboo.gui.onscreen_geom import OnscreenGeom
+from bamboo.gui.onscreen_image import OnscreenImage as Image
+from bamboo.gui.frame import Frame
+from bamboo.gui.button import Button
+from bamboo.gui.entry import Entry
+from bamboo.gui.entry_scroll import EntryScroll
+from bamboo.gui.label import Label
+from bamboo.gui.scrolled_list import ScrolledList
+from bamboo.gui.dialog import Dialog, YesNoDialog, YesNoCancelDialog
+from bamboo.gui.wait_bar import WaitBar
+from bamboo.gui.slider import Slider
+from bamboo.gui.scroll_bar import ScrollBar
+from bamboo.gui.scrolled_frame import ScrolledFrame
+from bamboo.gui.check_button import CheckButton
+from bamboo.gui.option_menu import OptionMenu
+from bamboo.gui.radio_button import RadioButton

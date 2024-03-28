@@ -1,10 +1,10 @@
 __all__ = ['EntryScroll']
 
 from panda3d.core import *
-from bamboo.gui import DirectGuiGlobals as DGG
-from bamboo.gui.ScrolledFrame import *
-from bamboo.gui.Frame import *
-from bamboo.gui.Entry import *
+from bamboo.gui import gui_globals as DGG
+from bamboo.gui.scrolled_frame import *
+from bamboo.gui.frame import *
+from bamboo.gui.entry import *
 
 
 class EntryScroll(Frame):

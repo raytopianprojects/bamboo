@@ -4,7 +4,7 @@ __all__ = []
 
 if __name__ == "__main__":
     from bamboo.showbase.ShowBase import ShowBase
-    import DirectGuiGlobals
+    import gui_globals
     from bamboo.gui import *
     # from whrandom import *
     from random import *

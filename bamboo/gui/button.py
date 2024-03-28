@@ -7,8 +7,8 @@ in-depth explanation and an example of how to use this class.
 __all__ = ['Button']
 
 from panda3d.core import *
-import bamboo.gui.DirectGuiGlobals as DGG
-from bamboo.gui.Frame import *
+import bamboo.gui.gui_globals as DGG
+from bamboo.gui.frame import *
 
 
 class Button(Frame):

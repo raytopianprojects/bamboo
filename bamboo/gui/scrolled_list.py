@@ -8,11 +8,11 @@ __all__ = ['DirectScrolledListItem', 'ScrolledList']
 
 from panda3d.core import *
 from direct.showbase import ShowBaseGlobal
-from bamboo.gui import DirectGuiGlobals as DGG
+from bamboo.gui import gui_globals as DGG
 from direct.directnotify import DirectNotifyGlobal
 from direct.task.Task import Task
-from bamboo.gui.Frame import *
-from bamboo.gui.Button import *
+from bamboo.gui.frame import *
+from bamboo.gui.button import *
 import sys
 
 if sys.version_info >= (3, 0):

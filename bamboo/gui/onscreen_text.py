@@ -8,7 +8,7 @@ __all__ = ['OnscreenText', 'Plain', 'ScreenTitle',
            'ScreenPrompt', 'NameConfirm', 'BlackOnWhite']
 
 from panda3d.core import *
-import bamboo.gui.DirectGuiGlobals as DGG
+import bamboo.gui.gui_globals as DGG
 import sys
 
 # These are the styles of text we might commonly see.  They set the

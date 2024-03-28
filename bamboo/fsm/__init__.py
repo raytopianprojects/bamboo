@@ -8,5 +8,5 @@ For more information on FSMs, consult the :ref:`finite-state-machines` section
 of the programming manual.
 """
 
-from bamboo.fsm.FSM import FSM
+from bamboo.fsm.fsm import FSM
 

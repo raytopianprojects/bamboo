@@ -19,10 +19,10 @@ explanation and an example of how to use this class.
 __all__ = ['Frame']
 
 from panda3d.core import *
-import bamboo.gui.DirectGuiGlobals as DGG
-from bamboo.gui.DirectGuiBase import *
-from bamboo.gui.OnscreenImage import OnscreenImage
-from bamboo.gui.OnscreenGeom import OnscreenGeom
+import bamboo.gui.gui_globals as DGG
+from bamboo.gui.gui_base import *
+from bamboo.gui.onscreen_image import OnscreenImage
+from bamboo.gui.onscreen_geom import OnscreenGeom
 import sys
 
 if sys.version_info >= (3, 0):
@@ -102,7 +102,7 @@ class Frame(DirectGuiWidget):
                 if text == None:
                     return
                 else:
-                    from .OnscreenText import OnscreenText
+                    from .onscreen_text import OnscreenText
                     self.create_component(
                         component, (), 'text',
                         OnscreenText,
