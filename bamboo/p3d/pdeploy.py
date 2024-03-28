@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 
 from panda3d.core import Filename, PandaSystem
-from direct.p3d.DeploymentTools import Standalone, Installer, Icon
+from bamboo.p3d.DeploymentTools import Standalone, Installer, Icon
 import getopt
 import os
 import sys

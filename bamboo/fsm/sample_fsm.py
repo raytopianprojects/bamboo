@@ -3,7 +3,7 @@
 __all__ = ['ClassicStyle', 'NewStyle', 'ToonEyes']
 
 from . import FSM
-from direct.task import Task
+from bamboo.task import Task
 
 
 class ClassicStyle(FSM.FSM):

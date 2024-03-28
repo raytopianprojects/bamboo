@@ -2,7 +2,7 @@
 
 __all__ = ['FourState']
 
-from direct.directnotify import DirectNotifyGlobal
+from bamboo.directnotify import DirectNotifyGlobal
 # import DistributedObject
 from . import state
 
@@ -95,9 +95,9 @@ class FourState:
                            self.enterState0,
                            self.exitState0,
                            [names[1],
-                           names[2],
-                           names[3],
-                           names[4]]),
+                            names[2],
+                            names[3],
+                            names[4]]),
             1: State.State(names[1],
                            self.enterState1,
                            self.exitState1,

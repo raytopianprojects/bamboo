@@ -8,10 +8,10 @@ Modified by Summer 2010 Carnegie Mellon University ETC PandaLE team: fixed a bug
 
 __all__ = ["Viewport", "ViewportManager"]
 
-from direct.showbase.DirectObject import DirectObject
-from direct.directtools.DirectGrid import DirectGrid
-from direct.showbase.ShowBase import WindowControls
-from direct.directtools.DirectGlobals import *
+from bamboo.showbase.DirectObject import DirectObject
+from bamboo.directtools.DirectGrid import DirectGrid
+from bamboo.showbase.ShowBase import WindowControls
+from bamboo.directtools.DirectGlobals import *
 from .WxPandaWindow import WxPandaWindow
 from panda3d.core import OrthographicLens, Point3, Plane, CollisionPlane, CollisionNode, NodePath
 import wx
@@ -145,7 +145,7 @@ class Viewport(WxPandaWindow, DirectObject):
             newHeight = self.ClientSize.GetHeight()
 
             if hasattr(base, "direct") and base.direct:
-                for dr in base.direct.drList:
+                for dr in base.bamboo.drList:
                     if dr.cam_node == self.camNode:
                         dr.updateFilmSize(newWidth, newHeight)
                         break

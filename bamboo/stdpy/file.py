@@ -209,7 +209,7 @@ class StreamIOWrapper(io.IOBase):
                 self.__write = self.__writer.write
 
     def __repr__(self):
-        s = "<direct.stdpy.file.StreamIOWrapper"
+        s = "<bamboo.stdpy.file.StreamIOWrapper"
         if hasattr(self, 'name'):
             s += " name='%s'" % (self.name)
         if hasattr(self, 'mode'):

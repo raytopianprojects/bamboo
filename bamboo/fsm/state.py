@@ -2,8 +2,8 @@
 
 __all__ = ['State']
 
-from direct.directnotify.DirectNotifyGlobal import directNotify
-from direct.showbase.DirectObject import DirectObject
+from bamboo.directnotify.DirectNotifyGlobal import directNotify
+from bamboo.showbase.DirectObject import DirectObject
 import sys
 
 

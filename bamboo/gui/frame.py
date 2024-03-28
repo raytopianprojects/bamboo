@@ -20,7 +20,7 @@ __all__ = ['Frame']
 
 from panda3d.core import *
 import bamboo.gui.gui_globals as DGG
-from bamboo.gui.gui_base import *
+from bamboo.gui.gui_base import DirectGuiWidget
 from bamboo.gui.onscreen_image import OnscreenImage
 from bamboo.gui.onscreen_geom import OnscreenGeom
 import sys

@@ -16,7 +16,7 @@ although it does send messages that allow a listener to play sounds or
 animations based on walker events.
 """
 
-from direct.directnotify import DirectNotifyGlobal
+from bamboo.directnotify import DirectNotifyGlobal
 from . import NonPhysicsWalker
 
 

@@ -1,4 +1,4 @@
-from direct.gui.DirectGui import *
+from bamboo.gui.DirectGui import *
 from panda3d.core import *
 
 

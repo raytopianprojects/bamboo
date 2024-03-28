@@ -296,10 +296,10 @@ class SceneGraphUIBase(wx.Panel):
                 if obj:
                     selections = self.tree.GetSelections()
                     if len(selections) > 1:
-                        base.direct.select(
+                        base.bamboo.select(
                             obj[OG.OBJ_NP], fMultiSelect=1, fLEPane=0)
                     else:
-                        base.direct.select(
+                        base.bamboo.select(
                             obj[OG.OBJ_NP], fMultiSelect=0, fLEPane=0)
 
     def onBeginDrag(self, event):

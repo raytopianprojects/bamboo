@@ -3,12 +3,12 @@ This is the module for curve edit
 """
 
 from pandac.PandaModules import *
-from direct.wxwidgets.WxPandaShell import *
-from direct.showbase.DirectObject import *
-from direct.directtools.DirectSelection import SelectionRay
-from direct.showutil.Rope import Rope
+from bamboo.wxwidgets.WxPandaShell import *
+from bamboo.showbase.DirectObject import *
+from bamboo.directtools.DirectSelection import SelectionRay
+from bamboo.showutil.Rope import Rope
 from .ActionMgr import *
-from direct.task import Task
+from bamboo.task import Task
 
 
 class CurveEditor(DirectObject):
@@ -28,8 +28,8 @@ class CurveEditor(DirectObject):
             self.view = self.editor.ui.currentView
 
             # Get the mouse position
-            x = base.direct.dr.mouseX
-            y = base.direct.dr.mouseY
+            x = base.bamboo.dr.mouseX
+            y = base.bamboo.dr.mouseY
 
             if self.editor.fMoveCamera == False and self.view != None:
                 self.createControler(x, y)
@@ -44,7 +44,7 @@ class CurveEditor(DirectObject):
         if self.editor.mode == self.editor.EDIT_CURVE_MODE:
             if self.editor.fMoveCamera == False:
                 self.selected = None
-                self.selected = base.direct.selected.last
+                self.selected = base.bamboo.selected.last
                 if self.selected != None:
                     for item in self.curveControl:
                         if item[1] == self.selected:
@@ -90,7 +90,7 @@ class CurveEditor(DirectObject):
         self.curveControl = []
         self.curve = []
         self.currentRope = None
-        base.direct.manipulationControl.enableManipulation()
+        base.bamboo.manipulationControl.enableManipulation()
         self.editor.ui.createCurveMenuItem.Check(False)
         self.editor.ui.editCurveMenuItem.Check(False)
 
@@ -104,7 +104,7 @@ class CurveEditor(DirectObject):
             curveObj, 'Degree', self.degree, fSelectObject=False, fUndo=False)
 
     def doneEdit(self):
-        base.direct.selected.last = None
+        base.bamboo.selected.last = None
 
     def createControler(self, x, y):
         if self.view != None:
@@ -132,7 +132,7 @@ class CurveEditor(DirectObject):
                 np = NodePath('temp')
                 np.setPos(self.view.camera, hitPt)
 
-                if base.direct.manipulationControl.fGridSnap:
+                if base.bamboo.manipulationControl.fGridSnap:
                     snappedPos = self.view.grid.computeSnapPoint(np.getPos())
                     np.setPos(snappedPos)
 

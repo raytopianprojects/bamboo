@@ -1,6 +1,6 @@
-from direct.showbase.InputStateGlobal import inputState
-from direct.directnotify import DirectNotifyGlobal
-from direct.controls import NonPhysicsWalker
+from bamboo.showbase.InputStateGlobal import inputState
+from bamboo.directnotify import DirectNotifyGlobal
+from bamboo.controls import NonPhysicsWalker
 
 
 class SwimWalker(NonPhysicsWalker.NonPhysicsWalker):

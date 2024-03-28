@@ -1,18 +1,18 @@
 
-from direct.showbase.InputStateGlobal import inputState
+from bamboo.showbase.input_state_global import inputState
 # from DirectGui import *
 # from PythonUtil import *
 # from IntervalGlobal import *
 
 # from otp.avatar import Avatar
-from direct.directnotify import DirectNotifyGlobal
+from bamboo.directnotify import direct_notify_global
 # import GhostWalker
 # import GravityWalker
 # import NonPhysicsWalker
 # import PhysicsWalker
 # if __debug__:
 #    import DevWalker
-from direct.task import Task
+from bamboo.task import Task
 from panda3d.core import ConfigVariableBool
 
 # This is a hack, it may be better to use a line instead of a ray.

@@ -88,15 +88,15 @@ __all__ = ['DirectGuiBase', 'DirectGuiWidget']
 
 
 from panda3d.core import *
-from bamboo.showbase import ShowBaseGlobal
-from bamboo.showbase.ShowBase import ShowBase
+from bamboo.showbase import show_base_global
+from bamboo.showbase.window import Window
 import bamboo.gui.gui_globals as DGG
 from bamboo.gui.onscreen_text import *
 from bamboo.gui.onscreen_geom import *
 from bamboo.gui.onscreen_image import *
-from bamboo.directtools.DirectUtil import ROUND_TO
+from bamboo.tools.direct_util import ROUND_TO
 from bamboo.showbase import DirectObject
-from bamboo.task import Task
+from bamboo.task import task
 import sys
 
 if sys.version_info >= (3, 0):
@@ -648,8 +648,8 @@ class DirectGuiBase(DirectObject):
         """
         # Need to tack on gui item specific id
         gEvent = event + self.guiId
-        if ShowBaseGlobal.config.GetBool('debug-directgui-msgs', False):
-            from direct.showbase.PythonUtil import StackTrace
+        if show_base_global.config.GetBool('debug-directgui-msgs', False):
+            from bamboo.showbase.python_util import StackTrace
             print(gEvent)
             print(StackTrace())
         self.accept(gEvent, command, extraArgs=extraArgs)
@@ -679,7 +679,7 @@ class DirectGuiWidget(DirectGuiBase, NodePath):
     # Determine the default initial state for inactive (or
     # unclickable) components.  If we are in edit mode, these are
     # actually clickable by default.
-    guiEdit = ShowBaseGlobal.config.GetBool('direct-gui-edit', False)
+    guiEdit = show_base_global.config.GetBool('direct-gui-edit', False)
     if guiEdit:
         inactiveInitState = DGG.NORMAL
     else:
@@ -741,22 +741,22 @@ class DirectGuiWidget(DirectGuiBase, NodePath):
             self.guiItem.setId(self['guiId'])
         self.guiId = self.guiItem.getId()
 
-        if ShowBaseGlobal.__dev__:
+        if show_base_global.__dev__:
             guiObjectCollector.addLevel(1)
             guiObjectCollector.flushLevel()
             # track gui items by guiId for tracking down leaks
-            if ShowBaseGlobal.config.GetBool('track-gui-items', False):
-                if not hasattr(ShowBase, 'guiItems'):
-                    ShowBase.guiItems = {}
-                if self.guiId in ShowBase.guiItems:
-                    ShowBase.notify.warning('duplicate guiId: %s (%s stomping %s)' %
-                                            (self.guiId, self,
-                                             ShowBase.guiItems[self.guiId]))
-                ShowBase.guiItems[self.guiId] = self
+            if show_base_global.config.GetBool('track-gui-items', False):
+                if not hasattr(Window, 'guiItems'):
+                    Window.guiItems = {}
+                if self.guiId in Window.guiItems:
+                    Window.notify.warning('duplicate guiId: %s (%s stomping %s)' %
+                                          (self.guiId, self,
+                                           Window.guiItems[self.guiId]))
+                Window.guiItems[self.guiId] = self
 
         # Attach button to parent and make that self
         if parent is None:
-            parent = ShowBaseGlobal.aspect2d
+            parent = show_base_global.aspect2d
 
         self.assign(parent.attachNewNode(self.guiItem, self['sortOrder']))
         # Update pose to initial values
@@ -851,7 +851,7 @@ class DirectGuiWidget(DirectGuiBase, NodePath):
             vMouse2render2d = Point3(mwn.getMouse()[0], 0, mwn.getMouse()[1])
             newEditVecLen = Vec3(state.refPos - vMouse2render2d).length()
             self.setScale(state.initScale * (newEditVecLen/state.editVecLen))
-        return Task.cont
+        return task.cont
 
     def guiDragTask(self, state):
         mwn = base.mouseWatcherNode
@@ -866,7 +866,7 @@ class DirectGuiWidget(DirectGuiBase, NodePath):
                     ROUND_TO(newPos[1], DirectGuiWidget.gridSpacing),
                     ROUND_TO(newPos[2], DirectGuiWidget.gridSpacing))
                 self.setPos(newPos)
-        return Task.cont
+        return task.cont
 
     def editStop(self, event):
         taskMgr.remove('guiEditTask')
@@ -1043,11 +1043,11 @@ class DirectGuiWidget(DirectGuiBase, NodePath):
 
     def destroy(self):
         if hasattr(self, "frameStyle"):
-            if ShowBaseGlobal.__dev__:
+            if show_base_global.__dev__:
                 guiObjectCollector.subLevel(1)
                 guiObjectCollector.flushLevel()
-                if hasattr(ShowBase, 'guiItems'):
-                    ShowBase.guiItems.pop(self.guiId, None)
+                if hasattr(Window, 'guiItems'):
+                    Window.guiItems.pop(self.guiId, None)
 
             # Destroy children
             for child in self.getChildren():

@@ -22,7 +22,7 @@ It is permissible to mix-and-match both threading and threading2
 within the same application. """
 
 from panda3d import core
-from direct.stdpy import thread as _thread
+from bamboo.stdpy import thread as _thread
 import sys as _sys
 
 import weakref

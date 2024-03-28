@@ -6,8 +6,8 @@ import os
 import time
 import copy
 
-from direct.task import Task
-from direct.actor.Actor import Actor
+from bamboo.task import Task
+from bamboo.actor.Actor import Actor
 from pandac.PandaModules import *
 from .ActionMgr import *
 from . import ObjectGlobals as OG
@@ -43,7 +43,7 @@ class ObjectMgrBase:
         self.findNodes(render)
 
     def reset(self):
-        base.direct.deselectAllCB()
+        base.bamboo.deselectAllCB()
 
         for id in list(self.objects.keys()):
             try:
@@ -378,8 +378,8 @@ class ObjectMgrBase:
             self.editor.ui.sceneGraphUI.select(obj[OG.OBJ_UID])
 
         if not obj[OG.OBJ_DEF].movable:
-            if base.direct.widget.fActive:
-                base.direct.widget.toggleWidget()
+            if base.bamboo.widget.fActive:
+                base.bamboo.widget.toggleWidget()
 
     def updateObjectPropertyUI(self, obj):
         objDef = obj[OG.OBJ_DEF]
@@ -511,7 +511,7 @@ class ObjectMgrBase:
     def updateObjectModel(self, model, obj, fSelectObject=True):
         """ replace object's model """
         if obj[OG.OBJ_MODEL] != model:
-            base.direct.deselectAllCB()
+            base.bamboo.deselectAllCB()
 
             objNP = obj[OG.OBJ_NP]
             objDef = obj[OG.OBJ_DEF]
@@ -570,12 +570,12 @@ class ObjectMgrBase:
                     animList[0], obj, fSelectObject=fSelectObject)
             else:
                 if fSelectObject:
-                    base.direct.select(newobj, fUndo=0)
+                    base.bamboo.select(newobj, fUndo=0)
 
     def updateObjectAnim(self, anim, obj, fSelectObject=True):
         """ replace object's anim """
         if obj[OG.OBJ_ANIM] != anim:
-            base.direct.deselectAllCB()
+            base.bamboo.deselectAllCB()
             objNP = obj[OG.OBJ_NP]
 
             # load new anim
@@ -584,7 +584,7 @@ class ObjectMgrBase:
             objNP.loop(animName)
             obj[OG.OBJ_ANIM] = anim
             if fSelectObject:
-                base.direct.select(objNP, fUndo=0)
+                base.bamboo.select(objNP, fUndo=0)
 
             self.editor.fNeedToSave = True
 
@@ -736,7 +736,7 @@ class ObjectMgrBase:
         if self.editor:
             self.editor.fNeedToSave = True
             if fSelectObject:
-                base.direct.select(obj[OG.OBJ_NP], fUndo=0)
+                base.bamboo.select(obj[OG.OBJ_NP], fUndo=0)
 
     def updateCurve(self, val, obj):
         curve = obj[OG.OBJ_NP]
@@ -896,7 +896,7 @@ class ObjectMgrBase:
                 self.duplicateChild(childNP, newChildObjNP)
 
     def duplicateSelected(self):
-        selectedNPs = base.direct.selected.getSelectedAsList()
+        selectedNPs = base.bamboo.selected.getSelectedAsList()
         duplicatedNPs = []
         for nodePath in selectedNPs:
             newObjNP = self.duplicateObject(nodePath)
@@ -904,14 +904,14 @@ class ObjectMgrBase:
                 self.duplicateChild(nodePath, newObjNP)
                 duplicatedNPs.append(newObjNP)
 
-        base.direct.deselectAllCB()
+        base.bamboo.deselectAllCB()
         for newNodePath in duplicatedNPs:
-            base.direct.select(newNodePath, fMultiSelect=1, fUndo=0)
+            base.bamboo.select(newNodePath, fMultiSelect=1, fUndo=0)
 
         self.editor.fNeedToSave = True
 
     def makeSelectedLive(self):
-        obj = self.findObjectByNodePath(base.direct.selected.last)
+        obj = self.findObjectByNodePath(base.bamboo.selected.last)
         if obj:
             if self.currLiveNP:
                 self.currLiveNP.clearColorScale()

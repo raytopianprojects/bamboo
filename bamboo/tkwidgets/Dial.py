@@ -5,9 +5,9 @@ Dial Class: Velocity style controller for floating point values with
 
 __all__ = ['Dial', 'AngleDial', 'DialWidget']
 
-from direct.showbase.TkGlobal import *
+from bamboo.showbase.TkGlobal import *
 from .Valuator import Valuator, VALUATOR_MINI, VALUATOR_FULL
-from direct.task import Task
+from bamboo.task import Task
 import math
 import operator
 import Pmw

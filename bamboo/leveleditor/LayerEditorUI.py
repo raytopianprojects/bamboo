@@ -172,7 +172,7 @@ class LayerEditorUI(wx.Panel):
                     del (layersData[j])
 
     def removeObj(self):
-        objNodePath = base.direct.selected.last
+        objNodePath = base.bamboo.selected.last
         if objNodePath is None:
             wx.MessageBox("No object was selected.",
                           self.editorTxt, wx.OK | wx.ICON_EXCLAMATION)
@@ -187,7 +187,7 @@ class LayerEditorUI(wx.Panel):
             wx.MessageBox("No layer was selected.",
                           self.editorTxt,  wx.OK | wx.ICON_EXCLAMATION)
             return
-        objNodePath = base.direct.selected.last
+        objNodePath = base.bamboo.selected.last
         if objNodePath is None:
             wx.MessageBox("No object was selected.",
                           self.editorTxt, wx.OK | wx.ICON_EXCLAMATION)

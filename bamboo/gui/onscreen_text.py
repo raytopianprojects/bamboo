@@ -107,7 +107,7 @@ class OnscreenText(NodePath):
               direction of the text.
         """
         if parent is None:
-            from direct.showbase import ShowBaseGlobal
+            from bamboo.showbase import ShowBaseGlobal
             parent = ShowBaseGlobal.aspect2d
 
         # make a text node

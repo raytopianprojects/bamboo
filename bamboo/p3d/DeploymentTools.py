@@ -21,14 +21,14 @@ import getpass
 import struct
 import gzip
 import plistlib
-from direct.directnotify.DirectNotifyGlobal import *
-from direct.showbase.AppRunnerGlobal import appRunner
+from bamboo.directnotify.DirectNotifyGlobal import *
+from bamboo.showbase.AppRunnerGlobal import appRunner
 from panda3d.core import PandaSystem, Filename, VirtualFileSystem, Multifile
 from panda3d.core import TiXmlDocument, TiXmlDeclaration, TiXmlElement, readXmlStream
 from panda3d.core import PNMImage, PNMFileTypeRegistry, StringStream
 from panda3d import core
-from direct.stdpy.file import *
-from direct.p3d.HostInfo import HostInfo
+from bamboo.stdpy.file import *
+from bamboo.p3d.HostInfo import HostInfo
 # This is important for some reason
 import encodings
 

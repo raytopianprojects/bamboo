@@ -7,7 +7,7 @@ in-depth explanation and an example of how to use this class.
 __all__ = ['OptionMenu']
 
 from panda3d.core import *
-from direct.showbase import ShowBaseGlobal
+from bamboo.showbase import show_base_global
 from bamboo.gui import gui_globals as DGG
 from bamboo.gui.button import *
 from bamboo.gui.label import *

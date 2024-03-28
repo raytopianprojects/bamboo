@@ -2,7 +2,7 @@
 
 __all__ = ['WidgetPropertiesDialog']
 
-from direct.showbase.TkGlobal import *
+from bamboo.showbase.TkGlobal import *
 import Pmw
 import sys
 

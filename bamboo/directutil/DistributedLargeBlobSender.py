@@ -1,7 +1,7 @@
 """DistributedLargeBlobSender module: contains the DistributedLargeBlobSender class"""
 
-from direct.distributed import DistributedObject
-from direct.directnotify import DirectNotifyGlobal
+from bamboo.distributed import DistributedObject
+from bamboo.directnotify import DirectNotifyGlobal
 from . import LargeBlobSenderConsts
 
 

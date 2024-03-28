@@ -7,11 +7,11 @@ __all__ = ["PackageInfo"]
 
 from panda3d.core import Filename, DocumentSpec, Multifile, Decompressor, EUOk, EUSuccess, VirtualFileSystem, Thread, getModelPath, ExecutionEnvironment, PStatCollector, TiXmlDocument, TiXmlDeclaration, TiXmlElement
 import panda3d.core as core
-from direct.p3d.FileSpec import FileSpec
-from direct.p3d.ScanDirectoryNode import ScanDirectoryNode
-from direct.showbase import VFSImporter
-from direct.directnotify.DirectNotifyGlobal import directNotify
-from direct.task.TaskManagerGlobal import taskMgr
+from bamboo.p3d.FileSpec import FileSpec
+from bamboo.p3d.ScanDirectoryNode import ScanDirectoryNode
+from bamboo.showbase import VFSImporter
+from bamboo.directnotify.DirectNotifyGlobal import directNotify
+from bamboo.task.TaskManagerGlobal import taskMgr
 import os
 import sys
 import random
@@ -765,7 +765,7 @@ class PackageInfo:
         constructs an installPlan that represents the steps of the
         patch installation; otherwise, returns None. """
 
-        from direct.p3d.PatchMaker import PatchMaker
+        from bamboo.p3d.PatchMaker import PatchMaker
 
         patchMaker = PatchMaker(self.getPackageDir())
         patchChain = patchMaker.getPatchChainToCurrent(

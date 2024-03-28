@@ -6,7 +6,7 @@ import sys
 import os
 import fnmatch
 
-from direct.stdpy import file
+from bamboo.stdpy import file
 
 __all__ = ["glob", "iglob"]
 

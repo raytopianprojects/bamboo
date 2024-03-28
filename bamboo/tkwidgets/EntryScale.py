@@ -4,7 +4,7 @@ EntryScale Class: Scale with a label, and a linked and validated entry
 
 __all__ = ['EntryScale', 'EntryScaleGroup']
 
-from direct.showbase.TkGlobal import *
+from bamboo.showbase.TkGlobal import *
 from panda3d.core import Vec4
 import Pmw
 import sys

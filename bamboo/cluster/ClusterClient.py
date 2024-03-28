@@ -3,14 +3,14 @@
 from panda3d.core import *
 from .ClusterMsgs import *
 from .ClusterConfig import *
-from direct.directnotify import DirectNotifyGlobal
-from direct.showbase import DirectObject
-from direct.task import Task
+from bamboo.directnotify import direct_notify_global
+from bamboo.showbase import DirectObject
+from bamboo.task import Task
 import os
 
 
-class ClusterClient(DirectObject.DirectObject):
-    notify = DirectNotifyGlobal.directNotify.newCategory("ClusterClient")
+class ClusterClient(DirectObject):
+    notify = direct_notify_global.directNotify.newCategory("ClusterClient")
     MGR_NUM = 1000000
 
     def __init__(self, configList, clusterSyncFlag):

@@ -8,14 +8,14 @@ explanation and an example of how to use this class.
 __all__ = ['Entry']
 
 from panda3d.core import *
-from direct.showbase import ShowBaseGlobal
+from bamboo.showbase import show_base_global
 from bamboo.gui import gui_globals as DGG
 from bamboo.gui.frame import *
 from bamboo.gui.onscreen_text import OnscreenText
 import sys
 # import this to make sure it gets pulled into the publish
 import encodings.utf_8
-from direct.showbase.DirectObject import DirectObject
+from bamboo.showbase.direct_object import DirectObject
 
 # Entry States:
 ENTRY_FOCUS_STATE = PGEntry.SFocus      # 0

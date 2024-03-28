@@ -12,10 +12,10 @@ You also need to define defaultPath in initLoader function, too.
 
 import os
 
-from direct.leveleditor.LevelLoaderBase import LevelLoaderBase
-from direct.leveleditor.ObjectMgr import ObjectMgr
-from direct.leveleditor.ProtoPalette import ProtoPalette
-from direct.leveleditor import ObjectGlobals as OG
+from bamboo.leveleditor.LevelLoaderBase import LevelLoaderBase
+from bamboo.leveleditor.ObjectMgr import ObjectMgr
+from bamboo.leveleditor.ProtoPalette import ProtoPalette
+from bamboo.leveleditor import ObjectGlobals as OG
 from .ObjectHandler import ObjectHandler
 from .ObjectPalette import ObjectPalette
 

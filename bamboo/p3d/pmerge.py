@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 
 from panda3d.core import Filename
-from direct.p3d import PackageMerger
+from bamboo.p3d import PackageMerger
 import os
 import getopt
 import sys

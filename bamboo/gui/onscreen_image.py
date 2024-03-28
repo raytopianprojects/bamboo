@@ -7,7 +7,7 @@ this class.
 __all__ = ['OnscreenImage']
 
 from panda3d.core import *
-from bamboo.showbase.DirectObject import DirectObject
+from bamboo.showbase.direct_object import DirectObject
 import sys
 
 if sys.version_info >= (3, 0):
@@ -55,7 +55,7 @@ class OnscreenImage(DirectObject, NodePath):
         NodePath.__init__(self)
 
         if parent is None:
-            from direct.showbase import ShowBaseGlobal
+            from bamboo.showbase import ShowBaseGlobal
             parent = ShowBaseGlobal.aspect2d
         self.setImage(image, parent=parent, sort=sort)
 

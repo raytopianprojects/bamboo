@@ -16,16 +16,16 @@ although it does send messages that allow a listener to play sounds or
 animations based on walker events.
 """
 
-from direct.showbase.InputStateGlobal import inputState
-from direct.directnotify import DirectNotifyGlobal
-from direct.showbase import DirectObject
-from direct.task.Task import Task
+from bamboo.showbase.input_state_global import inputState
+from bamboo.directnotify import direct_notify_global
+from bamboo.showbase import DirectObject
+from bamboo.task import Task
 from panda3d.core import *
 
 
-class DevWalker(DirectObject.DirectObject):
+class DevWalker(DirectObject):
 
-    notify = DirectNotifyGlobal.directNotify.newCategory("DevWalker")
+    notify = direct_notify_global.directNotify.newCategory("DevWalker")
     wantDebugIndicator = ConfigVariableBool(
         'want-avatar-physics-indicator', False)
     runMultiplier = ConfigVariableDouble('dev-run-multiplier', 4.0)
@@ -35,7 +35,7 @@ class DevWalker(DirectObject.DirectObject):
 
     # special methods
     def __init__(self):
-        DirectObject.DirectObject.__init__(self)
+        DirectObject.__init__(self)
         self.speed = 0.0
         self.rotationSpeed = 0.0
         self.slideSpeed = 0.0

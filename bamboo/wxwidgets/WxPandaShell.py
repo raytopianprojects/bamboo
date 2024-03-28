@@ -2,8 +2,8 @@ import wx
 from wx.lib.agw import fourwaysplitter as FWS
 
 from panda3d.core import *
-from direct.showbase.ShowBase import *
-from direct.directtools.DirectGlobals import *
+from bamboo.showbase.ShowBase import *
+from bamboo.directtools.DirectGlobals import *
 
 try:
     base
@@ -144,32 +144,32 @@ class WxPandaShell(WxAppShell):
         if self.fStartDirect:
             base.start_direct(f_want_tk=0, f_want_wx=0)
 
-            base.direct.disableMouseEvents()
-            newMouseEvents = ["_le_per_%s" % x for x in base.direct.mouseEvents] +\
-                             ["_le_fro_%s" % x for x in base.direct.mouseEvents] +\
-                             ["_le_lef_%s" % x for x in base.direct.mouseEvents] +\
-                             ["_le_top_%s" % x for x in base.direct.mouseEvents]
-            base.direct.mouseEvents = newMouseEvents
-            base.direct.enableMouseEvents()
+            base.bamboo.disableMouseEvents()
+            newMouseEvents = ["_le_per_%s" % x for x in base.bamboo.mouseEvents] +\
+                             ["_le_fro_%s" % x for x in base.bamboo.mouseEvents] +\
+                             ["_le_lef_%s" % x for x in base.bamboo.mouseEvents] +\
+                             ["_le_top_%s" % x for x in base.bamboo.mouseEvents]
+            base.bamboo.mouseEvents = newMouseEvents
+            base.bamboo.enableMouseEvents()
 
-            base.direct.disableKeyEvents()
-            keyEvents = ["_le_per_%s" % x for x in base.direct.keyEvents] +\
-                ["_le_fro_%s" % x for x in base.direct.keyEvents] +\
-                ["_le_lef_%s" % x for x in base.direct.keyEvents] +\
-                ["_le_top_%s" % x for x in base.direct.keyEvents]
-            base.direct.keyEvents = keyEvents
-            base.direct.enableKeyEvents()
+            base.bamboo.disableKeyEvents()
+            keyEvents = ["_le_per_%s" % x for x in base.bamboo.keyEvents] +\
+                ["_le_fro_%s" % x for x in base.bamboo.keyEvents] +\
+                ["_le_lef_%s" % x for x in base.bamboo.keyEvents] +\
+                ["_le_top_%s" % x for x in base.bamboo.keyEvents]
+            base.bamboo.keyEvents = keyEvents
+            base.bamboo.enableKeyEvents()
 
-            base.direct.disableModifierEvents()
-            modifierEvents = ["_le_per_%s" % x for x in base.direct.modifierEvents] +\
-                             ["_le_fro_%s" % x for x in base.direct.modifierEvents] +\
-                             ["_le_lef_%s" % x for x in base.direct.modifierEvents] +\
-                             ["_le_top_%s" % x for x in base.direct.modifierEvents]
-            base.direct.modifierEvents = modifierEvents
-            base.direct.enableModifierEvents()
+            base.bamboo.disableModifierEvents()
+            modifierEvents = ["_le_per_%s" % x for x in base.bamboo.modifierEvents] +\
+                             ["_le_fro_%s" % x for x in base.bamboo.modifierEvents] +\
+                             ["_le_lef_%s" % x for x in base.bamboo.modifierEvents] +\
+                             ["_le_top_%s" % x for x in base.bamboo.modifierEvents]
+            base.bamboo.modifierEvents = modifierEvents
+            base.bamboo.enableModifierEvents()
 
-            base.direct.cameraControl.lockRoll = True
-            base.direct.setFScaleWidgetByCam(1)
+            base.bamboo.cameraControl.lockRoll = True
+            base.bamboo.setFScaleWidgetByCam(1)
 
             unpickables = [
                 "z-guide",
@@ -190,28 +190,28 @@ class WxPandaShell(WxAppShell):
                 "Sphere",]
 
             for unpickable in unpickables:
-                base.direct.addUnpickable(unpickable)
+                base.bamboo.addUnpickable(unpickable)
 
-            base.direct.manipulationControl.optionalSkipFlags |= SKIP_UNPICKABLE
-            base.direct.manipulationControl.fAllowMarquee = 1
-            base.direct.manipulationControl.supportMultiView()
-            base.direct.cameraControl.useMayaCamControls = 1
-            base.direct.cameraControl.perspCollPlane = self.perspView.collPlane
-            base.direct.cameraControl.perspCollPlane2 = self.perspView.collPlane2
+            base.bamboo.manipulationControl.optionalSkipFlags |= SKIP_UNPICKABLE
+            base.bamboo.manipulationControl.fAllowMarquee = 1
+            base.bamboo.manipulationControl.supportMultiView()
+            base.bamboo.cameraControl.useMayaCamControls = 1
+            base.bamboo.cameraControl.perspCollPlane = self.perspView.collPlane
+            base.bamboo.cameraControl.perspCollPlane2 = self.perspView.collPlane2
 
-            for widget in base.direct.manipulationControl.widgetList:
+            for widget in base.bamboo.manipulationControl.widgetList:
                 widget.setBin('gui-popup', 0)
                 widget.setDepthTest(0)
 
             # [gjeon] to intercept messages here
-            base.direct.ignore('DIRECT-delete')
-            base.direct.ignore('DIRECT-select')
-            base.direct.ignore('DIRECT-preDeselectAll')
-            base.direct.ignore('DIRECT-toggleWidgetVis')
-            base.direct.fIgnoreDirectOnlyKeyMap = 1
+            base.bamboo.ignore('DIRECT-delete')
+            base.bamboo.ignore('DIRECT-select')
+            base.bamboo.ignore('DIRECT-preDeselectAll')
+            base.bamboo.ignore('DIRECT-toggleWidgetVis')
+            base.bamboo.fIgnoreDirectOnlyKeyMap = 1
 
             # [gjeon] do not use the old way of finding current DR
-            base.direct.drList.tryToGetCurrentDr = False
+            base.bamboo.drList.tryToGetCurrentDr = False
 
         else:
             base.direct = None

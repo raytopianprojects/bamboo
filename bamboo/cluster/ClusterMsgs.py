@@ -4,8 +4,8 @@
 # both ClusterClient and ClusterServer.
 
 from panda3d.core import *
-from direct.distributed.PyDatagram import PyDatagram
-from direct.distributed.PyDatagramIterator import PyDatagramIterator
+from bamboo.distributed.PyDatagram import PyDatagram
+from bamboo.distributed.PyDatagramIterator import PyDatagramIterator
 import time
 
 # these are the types of messages that are currently supported.
@@ -43,7 +43,7 @@ SERVER_STARTUP_STRING = (
     '__builtin__.cluster_sync_flag = %d;' +
     '__builtin__.clusterDaemonClient = \'%s\';' +
     '__builtin__.clusterDaemonPort = %d;'
-    'from direct.directbase.DirectStart import *; run()"')
+    'from bamboo.directbase.DirectStart import *; run()"')
 
 
 class ClusterMsgHandler:

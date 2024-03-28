@@ -4,7 +4,7 @@
 #
 # How to use this module:
 #
-#   from direct.directscripts import gendocs
+#   from bamboo.directscripts import gendocs
 #   gendocs.generate(version, indirlist, directdirlist, docdir, header, footer, urlprefix, urlsuffix)
 #
 #   - version is the panda version number

@@ -1,1 +1,0 @@
-from bamboo.showbase.ShowBase import ShowBase

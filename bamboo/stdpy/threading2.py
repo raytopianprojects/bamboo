@@ -18,8 +18,8 @@ from time import time as _time
 import sys as _sys
 import atexit as _atexit
 
-from direct.stdpy import thread as _thread
-from direct.stdpy.thread import stack_size, _newname, _local as local
+from bamboo.stdpy import thread as _thread
+from bamboo.stdpy.thread import stack_size, _newname, _local as local
 from panda3d import core
 _sleep = core.Thread.sleep
 

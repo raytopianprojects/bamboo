@@ -17,7 +17,7 @@ animations based on walker events.
 """
 
 from panda3d.core import *
-from direct.directnotify import DirectNotifyGlobal
+from bamboo.directnotify import DirectNotifyGlobal
 from . import NonPhysicsWalker
 
 

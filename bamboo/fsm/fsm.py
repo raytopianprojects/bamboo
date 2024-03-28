@@ -8,10 +8,10 @@ of the programming manual.
 __all__ = ['FSMException', 'FSM']
 
 
-from direct.showbase.DirectObject import DirectObject
-from direct.directnotify import DirectNotifyGlobal
-from direct.showbase import PythonUtil
-from direct.stdpy.threading import RLock
+from bamboo.showbase.direct_object import DirectObject
+from bamboo.directnotify import direct_notify_global
+from bamboo.showbase import python_util
+from bamboo.stdpy.threading import RLock
 
 
 class FSMException(Exception):
@@ -137,7 +137,7 @@ class FSM(DirectObject):
     See the code in SampleFSM.py for further examples.
     """
 
-    notify = DirectNotifyGlobal.directNotify.newCategory("FSM")
+    notify = direct_notify_global.directNotify.newCategory("FSM")
 
     serial_num = 0
 
@@ -169,7 +169,7 @@ class FSM(DirectObject):
         self.__requestQueue = []
 
         if __debug__:
-            from direct.fsm.ClassicFSM import _debugFsms
+            from bamboo.fsm.ClassicFSM import _debugFsms
             import weakref
             _debugFsms[name] = weakref.ref(self)
 

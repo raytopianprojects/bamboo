@@ -23,7 +23,7 @@ def spawnTask(self, name=None, callback=None, extraArgs=[]):
     """
     if not name:
         name = str(self.getUrl())
-    from direct.task import Task
+    from bamboo.task import Task
     task = Task.Task(self.doTask)
     task.callback = callback
     task.callbackArgs = extraArgs
@@ -37,7 +37,7 @@ del spawnTask
 
 
 def doTask(self, task):
-    from direct.task import Task
+    from bamboo.task import Task
     if self.run():
         return Task.cont
     if task.callback:

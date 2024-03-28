@@ -5,7 +5,7 @@ LevelEditor, ObjectHandler, ObjectPalette should be rewritten
 to be game specific.
 """
 
-from direct.actor import Actor
+from bamboo.actor import Actor
 
 from . import ObjectGlobals as OG
 
@@ -47,7 +47,7 @@ class ObjectHandler:
     def updateSmiley(self, val, obj):
         objNP = obj[OG.OBJ_NP]
         if base.direct:
-            base.direct.deselectAllCB()
+            base.bamboo.deselectAllCB()
         for child in objNP.findAllMatches("+GeomNode"):
             child.removeNode()
 

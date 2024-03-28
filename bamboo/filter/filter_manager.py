@@ -25,8 +25,8 @@ from panda3d.core import Camera
 from panda3d.core import OrthographicLens
 from panda3d.core import AuxBitplaneAttrib
 from panda3d.core import LightRampAttrib
-from direct.directnotify.DirectNotifyGlobal import *
-from direct.showbase.DirectObject import DirectObject
+from bamboo.directnotify.DirectNotifyGlobal import *
+from bamboo.showbase.DirectObject import DirectObject
 
 __all__ = ["FilterManager"]
 

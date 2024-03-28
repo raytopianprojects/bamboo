@@ -8,12 +8,12 @@ C++.
 For convenience, all of the DirectGui widgets may be imported from a
 single module as follows::
 
-   from direct.gui.DirectGui import *
+   from bamboo.gui.DirectGui import *
 """
 
-from bamboo.gui.onscreen_text import OnscreenText as Text
+from bamboo.gui.onscreen_text import OnscreenText
 from bamboo.gui.onscreen_geom import OnscreenGeom
-from bamboo.gui.onscreen_image import OnscreenImage as Image
+from bamboo.gui.onscreen_image import OnscreenImage
 from bamboo.gui.frame import Frame
 from bamboo.gui.button import Button
 from bamboo.gui.entry import Entry

@@ -5,9 +5,9 @@
 """
 __all__ = ["PackageMerger", "PackageMergerError"]
 
-from direct.p3d.FileSpec import FileSpec
-from direct.p3d.SeqValue import SeqValue
-from direct.directnotify.DirectNotifyGlobal import *
+from bamboo.p3d.FileSpec import FileSpec
+from bamboo.p3d.SeqValue import SeqValue
+from bamboo.directnotify.DirectNotifyGlobal import *
 from panda3d.core import *
 import shutil
 import os

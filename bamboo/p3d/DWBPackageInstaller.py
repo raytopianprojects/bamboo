@@ -5,9 +5,9 @@
 """
 __all__ = ["DWBPackageInstaller"]
 
-from direct.p3d.PackageInstaller import PackageInstaller
-from direct.gui.DirectWaitBar import DirectWaitBar
-from direct.gui import DirectGuiGlobals as DGG
+from bamboo.p3d.PackageInstaller import PackageInstaller
+from bamboo.gui.DirectWaitBar import DirectWaitBar
+from bamboo.gui import DirectGuiGlobals as DGG
 
 
 class DWBPackageInstaller(DirectWaitBar, PackageInstaller):

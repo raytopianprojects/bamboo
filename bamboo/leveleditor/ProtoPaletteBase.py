@@ -57,7 +57,7 @@ class ProtoPaletteBase(ObjectPaletteBase):
     def saveToFile(self):
         try:
             f = open(self.dirname + '/protoPaletteData.py', 'w')
-            f.write("from direct.leveleditor.ObjectPaletteBase import *\n\n")
+            f.write("from bamboo.leveleditor.ObjectPaletteBase import *\n\n")
             f.write("protoData = {\n")
             self.saveProtoData(f)
             f.write("}\n")

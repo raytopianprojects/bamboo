@@ -5,13 +5,13 @@
 """
 __all__ = ["PackageInstaller"]
 
-from direct.showbase.DirectObject import DirectObject
-from direct.stdpy.threading import Lock, RLock
-from direct.showbase.MessengerGlobal import messenger
-from direct.task.TaskManagerGlobal import taskMgr
-from direct.p3d.PackageInfo import PackageInfo
+from bamboo.showbase.DirectObject import DirectObject
+from bamboo.stdpy.threading import Lock, RLock
+from bamboo.showbase.MessengerGlobal import messenger
+from bamboo.task.TaskManagerGlobal import taskMgr
+from bamboo.p3d.PackageInfo import PackageInfo
 from panda3d.core import TPLow, PStatCollector
-from direct.directnotify.DirectNotifyGlobal import directNotify
+from bamboo.directnotify.DirectNotifyGlobal import directNotify
 
 
 class PackageInstaller(DirectObject):

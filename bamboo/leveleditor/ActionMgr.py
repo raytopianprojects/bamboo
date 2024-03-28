@@ -1,5 +1,5 @@
 from pandac.PandaModules import *
-from direct.showbase.PythonUtil import Functor
+from bamboo.showbase.PythonUtil import Functor
 from . import ObjectGlobals as OG
 
 
@@ -110,8 +110,8 @@ class ActionAddNewObj(ActionBase):
             if obj:
                 self.uid = obj[OG.OBJ_UID]
                 self.editor.ui.sceneGraphUI.delete(self.uid)
-                base.direct.deselect(obj[OG.OBJ_NP])
-                base.direct.removeNodePath(obj[OG.OBJ_NP])
+                base.bamboo.deselect(obj[OG.OBJ_NP])
+                base.bamboo.removeNodePath(obj[OG.OBJ_NP])
                 self.result = None
             else:
                 print("Can't undo this add")
@@ -123,7 +123,7 @@ class ActionDeleteObj(ActionBase):
     def __init__(self, editor, *args, **kargs):
         self.selecteUIDs = []
         self.editor = editor
-        function = base.direct.removeAllSelected
+        function = base.bamboo.removeAllSelected
         ActionBase.__init__(self, function, *args, **kargs)
         self.selectedUIDs = []
         self.hierarchy = {}
@@ -131,7 +131,7 @@ class ActionDeleteObj(ActionBase):
         self.objTransforms = {}
 
     def saveStatus(self):
-        selectedNPs = base.direct.selected.getSelectedAsList()
+        selectedNPs = base.bamboo.selected.getSelectedAsList()
 
         def saveObjStatus(np, isRecursive=True):
             obj = self.editor.objectMgr.findObjectByNodePath(np)
@@ -194,7 +194,7 @@ class ActionDeleteObj(ActionBase):
                             restoreObject(uid, parentNP)
                             del self.hierarchy[uid]
 
-            base.direct.deselectAllCB()
+            base.bamboo.deselectAllCB()
             for uid in self.selectedUIDs:
                 obj = self.editor.objectMgr.findObjectById(uid)
                 if obj:
@@ -305,12 +305,12 @@ class ActionSelectObj(ActionBase):
 
     def __init__(self, editor, *args, **kargs):
         self.editor = editor
-        function = base.direct.selectCB
+        function = base.bamboo.selectCB
         ActionBase.__init__(self, function, *args, **kargs)
         self.selectedUIDs = []
 
     def saveStatus(self):
-        selectedNPs = base.direct.selected.getSelectedAsList()
+        selectedNPs = base.bamboo.selected.getSelectedAsList()
         for np in selectedNPs:
             obj = self.editor.objectMgr.findObjectByNodePath(np)
             if obj:
@@ -319,7 +319,7 @@ class ActionSelectObj(ActionBase):
 
     def undo(self):
         print("Undo : selectObject")
-        base.direct.deselectAllCB()
+        base.bamboo.deselectAllCB()
         for uid in self.selectedUIDs:
             obj = self.editor.objectMgr.findObjectById(uid)
             if obj:
@@ -372,12 +372,12 @@ class ActionDeselectAll(ActionBase):
 
     def __init__(self, editor, *args, **kargs):
         self.editor = editor
-        function = base.direct.deselectAllCB
+        function = base.bamboo.deselectAllCB
         ActionBase.__init__(self, function, *args, **kargs)
         self.selectedUIDs = []
 
     def saveStatus(self):
-        selectedNPs = base.direct.selected.getSelectedAsList()
+        selectedNPs = base.bamboo.selected.getSelectedAsList()
         for np in selectedNPs:
             obj = self.editor.objectMgr.findObjectByNodePath(np)
             if obj:
@@ -386,7 +386,7 @@ class ActionDeselectAll(ActionBase):
 
     def undo(self):
         print("Undo : deselectAll")
-        base.direct.deselectAllCB()
+        base.bamboo.deselectAllCB()
         for uid in self.selectedUIDs:
             obj = self.editor.objectMgr.findObjectById(uid)
             if obj:
@@ -414,7 +414,7 @@ class ActionUpdateObjectProp(ActionBase):
         # uid=self.uid, xformMat=self.xformMat)
         self.result = self._do__call__()
         if self.editor and self.fSelectObject:
-            base.direct.select(self.obj[OG.OBJ_NP], fUndo=0)
+            base.bamboo.select(self.obj[OG.OBJ_NP], fUndo=0)
         return self.result
 
     def undo(self):
@@ -424,4 +424,4 @@ class ActionUpdateObjectProp(ActionBase):
             if self.undoFunc:
                 self.undoFunc()
                 if self.editor and self.fSelectObject:
-                    base.direct.select(self.obj[OG.OBJ_NP], fUndo=0)
+                    base.bamboo.select(self.obj[OG.OBJ_NP], fUndo=0)

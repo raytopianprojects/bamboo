@@ -1,6 +1,6 @@
 from panda3d.direct import CInterval
 from .extension_native_helpers import Dtool_funcToMethod
-from direct.directnotify.DirectNotifyGlobal import directNotify
+from bamboo.directnotify.direct_notify_global import directNotify
 
 CInterval.DtoolClassDict["notify"] = directNotify.newCategory("Interval")
 
@@ -78,7 +78,7 @@ def popupControls(self, tl=None):
     # it up as a dependency when building a .p3d package.
     import importlib
     import sys
-    EntryScale = importlib.import_module('direct.tkwidgets.EntryScale')
+    EntryScale = importlib.import_module('bamboo.tkwidgets.EntryScale')
     if sys.version_info >= (3, 0):
         tkinter = importlib.import_module('tkinter')
     else:

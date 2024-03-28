@@ -3,8 +3,8 @@
 """
 import wx
 
-from direct.interval.IntervalGlobal import *
-from direct.actor.Actor import *
+from bamboo.interval.IntervalGlobal import *
+from bamboo.actor.Actor import *
 from . import ObjectGlobals as OG
 
 
@@ -94,14 +94,14 @@ class CurveAnimUI(wx.Dialog):
         self.Layout()
 
     def OnChooseNode(self, evt):
-        if base.direct.selected.last == None or base.direct.selected.last.hasTag('Controller') or not base.direct.selected.last.hasTag('OBJRoot'):
+        if base.bamboo.selected.last == None or base.bamboo.selected.last.hasTag('Controller') or not base.bamboo.selected.last.hasTag('OBJRoot'):
             dlg = wx.MessageDialog(
                 None, 'Please select an object.', 'NOTICE', wx.OK)
             dlg.ShowModal()
             dlg.Destroy()
         else:
             obj = self.editor.objectMgr.findObjectByNodePath(
-                base.direct.selected.last)
+                base.bamboo.selected.last)
             if obj[OG.OBJ_DEF].name == '__Curve__':
                 dlg = wx.MessageDialog(
                     None, 'Please select an object, not a curve.', 'NOTICE', wx.OK)
@@ -112,14 +112,14 @@ class CurveAnimUI(wx.Dialog):
                 self.chooseNodeTxt.SetValue(str(self.nodePath[OG.OBJ_UID]))
 
     def OnChooseCurve(self, evt):
-        if base.direct.selected.last == None or base.direct.selected.last.hasTag('Controller') or not base.direct.selected.last.hasTag('OBJRoot'):
+        if base.bamboo.selected.last == None or base.bamboo.selected.last.hasTag('Controller') or not base.bamboo.selected.last.hasTag('OBJRoot'):
             dlg = wx.MessageDialog(
                 None, 'Please select a curve.', 'NOTICE', wx.OK)
             dlg.ShowModal()
             dlg.Destroy()
         else:
             obj = self.editor.objectMgr.findObjectByNodePath(
-                base.direct.selected.last)
+                base.bamboo.selected.last)
             if obj[OG.OBJ_DEF].name != '__Curve__':
                 dlg = wx.MessageDialog(
                     None, 'Please select a curve, not an object.', 'NOTICE', wx.OK)

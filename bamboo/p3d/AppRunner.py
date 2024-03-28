@@ -7,7 +7,7 @@ runp3d.py for a command-line tool to invoke this module.
 
 The global AppRunner instance may be imported as follows::
 
-   from direct.showbase.AppRunnerGlobal import appRunner
+   from bamboo.showbase.AppRunnerGlobal import appRunner
 
 This will be None if Panda was not run from the runtime environment.
 
@@ -26,23 +26,23 @@ if sys.version_info >= (3, 0):
 else:
     import __builtin__ as builtins
 
-from direct.showbase import VFSImporter
-from direct.showbase.DirectObject import DirectObject
+from bamboo.showbase import VFSImporter
+from bamboo.showbase.DirectObject import DirectObject
 from panda3d.core import VirtualFileSystem, Filename, Multifile, loadPrcFileData, unloadPrcFile, getModelPath, WindowProperties, ExecutionEnvironment, PandaSystem, Notify, StreamWriter, ConfigVariableString, ConfigPageManager
 from panda3d.direct import init_app_for_gui
 from panda3d import core
-from direct.stdpy import file, glob
-from direct.task.TaskManagerGlobal import taskMgr
-from direct.showbase.MessengerGlobal import messenger
-from direct.showbase import AppRunnerGlobal
-from direct.directnotify.DirectNotifyGlobal import directNotify
-from direct.p3d.HostInfo import HostInfo
-from direct.p3d.ScanDirectoryNode import ScanDirectoryNode
-from direct.p3d.InstalledHostData import InstalledHostData
-from direct.p3d.InstalledPackageData import InstalledPackageData
+from bamboo.stdpy import file, glob
+from bamboo.task.TaskManagerGlobal import taskMgr
+from bamboo.showbase.MessengerGlobal import messenger
+from bamboo.showbase import AppRunnerGlobal
+from bamboo.directnotify.DirectNotifyGlobal import directNotify
+from bamboo.p3d.HostInfo import HostInfo
+from bamboo.p3d.ScanDirectoryNode import ScanDirectoryNode
+from bamboo.p3d.InstalledHostData import InstalledHostData
+from bamboo.p3d.InstalledPackageData import InstalledPackageData
 
 # These imports are read by the C++ wrapper in p3dPythonRun.cxx.
-from direct.p3d.JavaScript import Undefined, ConcreteStruct
+from bamboo.p3d.JavaScript import Undefined, ConcreteStruct
 
 
 class ArgumentError(AttributeError):
@@ -708,7 +708,7 @@ class AppRunner(DirectObject):
 
             # Temporarily set this flag while we import the app, so
             # that if the app calls run() within its own main.py, it
-            # will properly get ignored by ShowBase.
+            # will properly get ignored by Window.
             self.initialAppImport = True
 
             # Python won't let us import a module named __main__.  So,

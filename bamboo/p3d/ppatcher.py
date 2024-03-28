@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 
 from panda3d.core import Filename
-from direct.p3d.PatchMaker import PatchMaker
+from bamboo.p3d.PatchMaker import PatchMaker
 import os
 import getopt
 import sys

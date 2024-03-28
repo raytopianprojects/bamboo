@@ -4,7 +4,7 @@
 __all__ = ['StateVar', 'FunctionCall', 'EnterExit', 'Pulse', 'EventPulse',
            'EventArgument', ]
 
-from direct.showbase.DirectObject import DirectObject
+from bamboo.showbase.direct_object import DirectObject
 
 
 class PushesStateChanges:

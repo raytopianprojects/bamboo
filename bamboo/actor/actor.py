@@ -8,9 +8,9 @@ __all__ = ['Actor']
 
 from panda3d.core import *
 from panda3d.core import Loader as PandaLoader
-from direct.showbase.DirectObject import DirectObject
-from direct.showbase.Loader import Loader
-from direct.directnotify import DirectNotifyGlobal
+from bamboo.showbase.direct_object import DirectObject
+from bamboo.showbase.loader import Loader
+from bamboo.directnotify import direct_notify_global
 
 
 class Actor(DirectObject, NodePath):
@@ -18,7 +18,7 @@ class Actor(DirectObject, NodePath):
     Actor class: Contains methods for creating, manipulating
     and playing animations on characters
     """
-    notify = DirectNotifyGlobal.directNotify.newCategory("Actor")
+    notify = direct_notify_global.directNotify.newCategory("Actor")
     partPrefix = "__Actor_"
 
     modelLoaderOptions = LoaderOptions(LoaderOptions.LFSearch |
@@ -1540,7 +1540,7 @@ class Actor(DirectObject, NodePath):
         # Don't use a regular import, to prevent ModuleFinder from picking
         # it up as a dependency when building a .p3d package.
         import importlib
-        AnimPanel = importlib.import_module('direct.tkpanels.AnimPanel')
+        AnimPanel = importlib.import_module('bamboo.tkpanels.AnimPanel')
         return AnimPanel.AnimPanel(self)
 
     def stop(self, animName=None, partName=None):
@@ -2382,8 +2382,8 @@ class Actor(DirectObject, NodePath):
             Actor.notify.error("actor has no animation %s", animName)
 
         # only bind if not already bound!
-        if anim.animControl:
-            return anim.animControl
+        if anim.anim_control:
+            return anim.anim_control
 
         if self.mergeLODBundles:
             bundle = self.__commonBundleHandles[subpartDef.truePartName].getBundle(
@@ -2392,7 +2392,7 @@ class Actor(DirectObject, NodePath):
             bundle = self.__partBundleDict[lodName][subpartDef.truePartName].getBundle(
             )
 
-        if anim.animBundle:
+        if anim.anim_bundle:
             # We already have a bundle; just bind it.
             animControl = bundle.bind_anim(
                 anim.animBundle, -1, subpartDef.subset)
@@ -2477,8 +2477,8 @@ class Actor(DirectObject, NodePath):
                     self.__animControlDict[lodName][partName][animName] = anim
 
     def actorInterval(self, *args, **kw):
-        from direct.interval import ActorInterval
-        return ActorInterval.ActorInterval(self, *args, **kw)
+        from bamboo.interval import actor_interval
+        return actor_interval.ActorInterval(self, *args, **kw)
 
     def getAnimBlends(self, animName=None, partName=None, lodName=None):
         """Returns a list of the form::

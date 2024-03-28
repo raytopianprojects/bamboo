@@ -1,6 +1,6 @@
-from direct.directnotify import DirectNotifyGlobal
-from direct.showbase import DirectObject
-from direct.showbase.PythonUtil import SerialNumGen
+from bamboo.directnotify import DirectNotifyGlobal
+from bamboo.showbase import DirectObject
+from bamboo.showbase.PythonUtil import SerialNumGen
 
 # internal class, don't create these on your own
 

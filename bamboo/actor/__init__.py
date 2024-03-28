@@ -9,5 +9,5 @@ See the :ref:`loading-actors-and-animations` page in the Programming Guide
 to learn more about loading animated models.
 """
 
-from .actor import Actor
-from .distributed_actor import DistributedActor
+from bamboo.actor.actor import Actor
+from bamboo.actor.distributed_actor import DistributedActor

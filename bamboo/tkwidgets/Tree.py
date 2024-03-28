@@ -20,7 +20,7 @@ __all__ = ['TreeNode', 'TreeItem']
 # - optimize tree redraw after expand of subnode
 
 import os
-from direct.showbase.TkGlobal import *
+from bamboo.showbase.TkGlobal import *
 from panda3d.core import *
 
 # Initialize icon directory

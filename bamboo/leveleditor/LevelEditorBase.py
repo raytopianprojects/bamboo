@@ -5,9 +5,9 @@ You should write your own LevelEditor class inheriting this.
 Refer LevelEditor.py for example.
 """
 
-from direct.showbase.DirectObject import *
-from direct.directtools.DirectUtil import *
-from direct.gui.DirectGui import *
+from bamboo.showbase.DirectObject import *
+from bamboo.directtools.DirectUtil import *
+from bamboo.gui.DirectGui import *
 
 from .CurveEditor import *
 from .FileMgr import *
@@ -48,7 +48,7 @@ class LevelEditorBase(DirectObject):
     def initialize(self):
         """ You should call this in your __init__ method of inherited LevelEditor class """
         # specifiy what obj can be 'selected' as objects
-        base.direct.selected.addTag('OBJRoot')
+        base.bamboo.selected.addTag('OBJRoot')
 
         self.actionEvents.extend([
             # Node path events
@@ -111,17 +111,17 @@ class LevelEditorBase(DirectObject):
     def removeNodePathHook(self, nodePath):
         if nodePath is None:
             return
-        base.direct.deselect(nodePath)
+        base.bamboo.deselect(nodePath)
         self.objectMgr.removeObjectByNodePath(nodePath)
 
-        if base.direct.selected.last is not None and nodePath == base.direct.selected.last:
-            # if base.direct.selected.last is refering to this
+        if base.bamboo.selected.last is not None and nodePath == base.bamboo.selected.last:
+            # if base.bamboo.selected.last is refering to this
             # removed obj, clear the reference
             if (hasattr(__builtins__, 'last')):
                 __builtins__.last = None
             else:
                 __builtins__['last'] = None
-            base.direct.selected.last = None
+            base.bamboo.selected.last = None
 
     def toggleWidget(self):
         if self.objectMgr.currNodePath:
@@ -129,10 +129,10 @@ class LevelEditorBase(DirectObject):
                 self.objectMgr.currNodePath)
             if obj and not obj[OG.OBJ_DEF].movable:
                 return
-        base.direct.toggleWidgetVis()
+        base.bamboo.toggleWidgetVis()
 
     def handleMouse1(self, modifiers):
-        if base.direct.fAlt or modifiers == 4:
+        if base.bamboo.fAlt or modifiers == 4:
             self.fMoveCamera = True
             return
         if self.mode == self.CREATE_CURVE_MODE:
@@ -142,7 +142,7 @@ class LevelEditorBase(DirectObject):
         self.fMoveCamera = False
 
     def handleMouse2(self, modifiers):
-        if base.direct.fAlt or modifiers == 4:
+        if base.bamboo.fAlt or modifiers == 4:
             self.fMoveCamera = True
             return
 
@@ -150,7 +150,7 @@ class LevelEditorBase(DirectObject):
         self.fMoveCamera = False
 
     def handleMouse3(self, modifiers):
-        if base.direct.fAlt or modifiers == 4:
+        if base.bamboo.fAlt or modifiers == 4:
             self.fMoveCamera = True
             return
 
@@ -160,7 +160,7 @@ class LevelEditorBase(DirectObject):
         self.fMoveCamera = False
 
     def handleDelete(self):
-        oldSelectedNPs = base.direct.selected.getSelectedAsList()
+        oldSelectedNPs = base.bamboo.selected.getSelectedAsList()
         oldUIDs = []
         for oldNP in oldSelectedNPs:
             obj = self.objectMgr.findObjectByNodePath(oldNP)
@@ -177,16 +177,16 @@ class LevelEditorBase(DirectObject):
 # reply = wx.MessageBox("Do you want to delete selected?", "Delete?",
 # wx.YES_NO | wx.ICON_QUESTION)
 # if reply == wx.YES:
-# base.direct.removeAllSelected()
+# base.bamboo.removeAllSelected()
 # else:
 # need to reset COA
-# dnp = base.direct.selected.last
+# dnp = base.bamboo.selected.last
 # Update camera controls coa to this point
 # Coa2Camera = Coa2Dnp * Dnp2Camera
-# mCoa2Camera = dnp.mCoa2Dnp * dnp.getMat(base.direct.camera)
+# mCoa2Camera = dnp.mCoa2Dnp * dnp.getMat(base.bamboo.camera)
 # row = mCoa2Camera.getRow(3)
 # coa = Vec3(row[0], row[1], row[2])
-# base.direct.cameraControl.updateCoa(coa)
+# base.bamboo.cameraControl.updateCoa(coa)
 
     def cleanUpManipulating(self, selectedNPs):
         for np in selectedNPs:
@@ -201,7 +201,7 @@ class LevelEditorBase(DirectObject):
         if fUndo:
             # Select tagged object if present
             if fSelectTag:
-                for tag in base.direct.selected.tagList:
+                for tag in base.bamboo.selected.tagList:
                     if nodePath.hasNetTag(tag):
                         nodePath = nodePath.findNetTag(tag)
                         break
@@ -209,17 +209,17 @@ class LevelEditorBase(DirectObject):
             self.actionMgr.push(action)
             action()
         else:
-            base.direct.selectCB(nodePath, fMultiSelect,
+            base.bamboo.selectCB(nodePath, fMultiSelect,
                                  fSelectTag, fResetAncestry, fLEPane, fUndo)
 
     def selectedNodePathHook(self, nodePath, fMultiSelect=0, fSelectTag=1, fLEPane=0):
         # handle unpickable nodepath
-        if nodePath.getName() in base.direct.iRay.unpickable:
-            base.direct.deselect(nodePath)
+        if nodePath.getName() in base.bamboo.iRay.unpickable:
+            base.bamboo.deselect(nodePath)
             return
 
         if fMultiSelect == 0 and fLEPane == 0:
-            oldSelectedNPs = base.direct.selected.getSelectedAsList()
+            oldSelectedNPs = base.bamboo.selected.getSelectedAsList()
             for oldNP in oldSelectedNPs:
                 obj = self.objectMgr.findObjectByNodePath(oldNP)
                 if obj:
@@ -233,7 +233,7 @@ class LevelEditorBase(DirectObject):
                 "DIRECT-enter", self.curveEditor.onBaseMode)
 
     def deselectAll(self, np=None):
-        if len(base.direct.selected.getSelectedAsList()) == 0:
+        if len(base.bamboo.selected.getSelectedAsList()) == 0:
             return
         action = ActionDeselectAll(self)
         self.actionMgr.push(action)
@@ -251,8 +251,8 @@ class LevelEditorBase(DirectObject):
                 if result == False:
                     return
 
-        base.direct.deselectAll()
-        base.direct.selected.last = None
+        base.bamboo.deselectAll()
+        base.bamboo.selected.last = None
         self.ui.reset()
         self.objectMgr.reset()
         self.animMgr.reset()
@@ -269,7 +269,7 @@ class LevelEditorBase(DirectObject):
         self.setTitleWithFilename()
 
     def resetOrthoCam(self, view):
-        base.direct.drList[base.cam_list.index(
+        base.bamboo.drList[base.cam_list.index(
             NodePath(view.cam_node))].orthoFactor = 0.1
         x = view.ClientSize.GetWidth() * 0.1
         y = view.ClientSize.GetHeight() * 0.1
@@ -302,7 +302,7 @@ class LevelEditorBase(DirectObject):
             f = open(self.settingsFile, 'w')
             f.write('gridSize\n%f\n' % self.ui.perspView.grid.gridSize)
             f.write('gridSpacing\n%f\n' % self.ui.perspView.grid.gridSpacing)
-            f.write('hotKey\n%s\n' % base.direct.hotKeyMap)
+            f.write('hotKey\n%s\n' % base.bamboo.hotKeyMap)
             f.close()
         except:
             pass
@@ -334,15 +334,15 @@ class LevelEditorBase(DirectObject):
                         customHotKeyDict[desc[1]] = hotKey
 
                     overriddenKeys = []
-                    for key in base.direct.hotKeyMap.keys():
-                        desc = base.direct.hotKeyMap[key]
+                    for key in base.bamboo.hotKeyMap.keys():
+                        desc = base.bamboo.hotKeyMap[key]
                         if desc[1] in customHotKeyDict.keys():
                             overriddenKeys.append(key)
 
                     for key in overriddenKeys:
-                        del base.direct.hotKeyMap[key]
+                        del base.bamboo.hotKeyMap[key]
 
-                    base.direct.hotKeyMap.update(customHotKeyMap)
+                    base.bamboo.hotKeyMap.update(customHotKeyMap)
 
             self.ui.updateGrids(gridSize, gridSpacing)
             self.ui.updateMenu()
@@ -377,9 +377,9 @@ class LevelEditorBase(DirectObject):
     def exportToMayaCB(self, mayaFileName, exportRootNP):
         bamFileName = mayaFileName + ".bam"
 
-        if base.direct.selected.last:
+        if base.bamboo.selected.last:
             obj = self.objectMgr.findObjectByNodePath(
-                base.direct.selected.last)
+                base.bamboo.selected.last)
             if obj:
                 exportRootNP = obj[OG.OBJ_NP]
 
@@ -427,14 +427,14 @@ class LevelEditorBase(DirectObject):
         # perform doMethodLater again after delay
         # This crashes when CTRL-C'ing, so this is a cheap hack.
         # return 2
-        from direct.task import Task
+        from bamboo.task import Task
         return Task.again
 
     def propMeetsReq(self, typeName, parentNP):
         if self.ui.parentToSelectedMenuItem.IsChecked():
-            if base.direct.selected.last:
+            if base.bamboo.selected.last:
                 parent = base.le.objectMgr.findObjectByNodePath(
-                    base.direct.selected.last)
+                    base.bamboo.selected.last)
                 if parent:
                     parentNP[0] = parent[OG.OBJ_NP]
         else:

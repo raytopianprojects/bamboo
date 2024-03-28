@@ -8,7 +8,7 @@ import math
 from wx.lib.embeddedimage import PyEmbeddedImage
 from wx.lib.scrolledpanel import ScrolledPanel
 from wx.lib.agw.cubecolourdialog import *
-from direct.wxwidgets.WxSlider import *
+from bamboo.wxwidgets.WxSlider import *
 from pandac.PandaModules import *
 from . import ObjectGlobals as OG
 from . import AnimGlobals as AG
@@ -32,7 +32,7 @@ class AnimFileDrop(wx.FileDropTarget):
 
     def OnDropFiles(self, x, y, filenames):
         obj = self.editor.objectMgr.findObjectByNodePath(
-            base.direct.selected.last)
+            base.bamboo.selected.last)
         if obj is None:
             return
 
@@ -90,7 +90,7 @@ class ObjectPropUI(wx.Panel):
         self.parent = wx.GetTopLevelParent(self)
         if self.parent.editor.mode == self.parent.editor.ANIM_MODE:
             obj = self.parent.editor.objectMgr.findObjectByNodePath(
-                base.direct.selected.last)
+                base.bamboo.selected.last)
 
             objUID = obj[OG.OBJ_UID]
             propertyName = self.label.GetLabelText()

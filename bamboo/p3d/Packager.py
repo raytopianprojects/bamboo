@@ -20,13 +20,13 @@ import glob
 import struct
 import subprocess
 import copy
-from direct.p3d.FileSpec import FileSpec
-from direct.p3d.SeqValue import SeqValue
-from direct.p3d.HostInfo import HostInfo
-from direct.showbase import Loader
-from direct.showbase import AppRunnerGlobal
-from direct.dist import FreezeTool
-from direct.directnotify.DirectNotifyGlobal import *
+from bamboo.p3d.FileSpec import FileSpec
+from bamboo.p3d.SeqValue import SeqValue
+from bamboo.p3d.HostInfo import HostInfo
+from bamboo.showbase import Loader
+from bamboo.showbase import AppRunnerGlobal
+from bamboo.dist import FreezeTool
+from bamboo.directnotify.DirectNotifyGlobal import *
 
 vfs = VirtualFileSystem.getGlobalPtr()
 
@@ -3491,7 +3491,7 @@ class Packager:
         # This module and all its dependencies come frozen into p3dpython.
         # We should mark them as having already been added so that we don't
         # add them again to the Multifile.
-        self.do_module('direct.showbase.VFSImporter')
+        self.do_module('bamboo.showbase.VFSImporter')
         self.currentPackage.freezer.done(addStartupModules=True)
         self.currentPackage.freezer.writeCode(None)
         self.currentPackage.addExtensionModules()
@@ -3501,10 +3501,10 @@ class Packager:
 
         # This is the key Python module that is imported at runtime to
         # start an application running.
-        self.do_module('direct.p3d.AppRunner')
+        self.do_module('bamboo.p3d.AppRunner')
 
         # This is the main program that drives the runtime Python.  It
-        # is responsible for importing direct.p3d.AppRunner to start an
+        # is responsible for importing bamboo.p3d.AppRunner to start an
         # application running.  The program comes in two parts: an
         # executable, and an associated dynamic library.  Note that the
         # .exe and .dll extensions are automatically replaced with the
@@ -3519,7 +3519,7 @@ class Packager:
 
             # Find p3dpython.plist in the direct source tree.
             import direct
-            plist = Filename(direct.__path__[0], 'plugin/p3dpython.plist')
+            plist = Filename(bamboo.__path__[0], 'plugin/p3dpython.plist')
 
 # Find panda3d.icns in the models tree.
 # filename = Filename('plugin_images/panda3d.icns')

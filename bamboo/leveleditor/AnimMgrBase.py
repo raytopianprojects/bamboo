@@ -5,7 +5,7 @@ Defines AnimMgrBase
 import os
 import math
 
-from direct.interval.IntervalGlobal import *
+from bamboo.interval.IntervalGlobal import *
 from panda3d.core import VBase3
 from . import ObjectGlobals as OG
 from . import AnimGlobals as AG
@@ -381,9 +381,9 @@ class AnimMgrBase:
         self.colorUpdate(r, g, b, A, np)
 
     def colorUpdate(self, r, g, b, a, np):
-        if base.direct.selected.last == None:
+        if base.bamboo.selected.last == None:
             self.editor.objectMgr.updateObjectColor(r, g, b, a, np)
-        elif self.editor.objectMgr.findObjectByNodePath(np) == self.editor.objectMgr.findObjectByNodePath(base.direct.selected.last):
+        elif self.editor.objectMgr.findObjectByNodePath(np) == self.editor.objectMgr.findObjectByNodePath(base.bamboo.selected.last):
             self.editor.ui.objectPropertyUI.propCR.setValue(r)
             self.editor.ui.objectPropertyUI.propCG.setValue(g)
             self.editor.ui.objectPropertyUI.propCB.setValue(b)

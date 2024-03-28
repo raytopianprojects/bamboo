@@ -1,5 +1,5 @@
-from direct.showbase.DirectObject import DirectObject
-from direct.showbase.TkGlobal import *
+from bamboo.showbase.DirectObject import DirectObject
+from bamboo.showbase.TkGlobal import *
 from .Tree import *
 import Pmw
 

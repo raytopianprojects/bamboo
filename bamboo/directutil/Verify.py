@@ -14,11 +14,11 @@ You can use :func:`verify()` just like assert, with these small differences:
 - :func:`verify()` will print something like this before raising an exception::
 
     verify failed:
-        File "direct/src/showbase/ShowBase.py", line 60
+        File "direct/src/showbase/Window.py", line 60
 
 - :func:`verify()` will optionally start pdb for you (this is currently false
   by default).  You can either edit Verify.py to set ``wantVerifyPdb = 1`` or
-  if you are using ShowBase you can set ``want-verify-pdb 1`` in your
+  if you are using Window you can set ``want-verify-pdb 1`` in your
   Config.prc file to start pdb automatically.
 
 - :func:`verify()` will still function in the release build.  It will not be

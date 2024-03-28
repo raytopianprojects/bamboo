@@ -8,9 +8,9 @@ __all__ = ["HostInfo"]
 from panda3d.core import HashVal, Filename, PandaSystem, DocumentSpec, Ramfile
 from panda3d.core import ConfigVariableInt
 from panda3d import core
-from direct.p3d.PackageInfo import PackageInfo
-from direct.p3d.FileSpec import FileSpec
-from direct.directnotify.DirectNotifyGlobal import directNotify
+from bamboo.p3d.PackageInfo import PackageInfo
+from bamboo.p3d.FileSpec import FileSpec
+from bamboo.directnotify.DirectNotifyGlobal import directNotify
 import time
 
 
@@ -373,7 +373,7 @@ class HostInfo:
                 maxAge = None
         if maxAge is None:
             # Default max_age if unspecified (see p3d_plugin.h).
-            from direct.p3d.AppRunner import AppRunner
+            from bamboo.p3d.AppRunner import AppRunner
             maxAge = AppRunner.P3D_CONTENTS_DEFAULT_MAX_AGE
 
         # Get the latest possible expiration time, based on the max_age

@@ -27,7 +27,7 @@ See pack3d.p3d for an application that generates these p3d files.
 import sys
 import getopt
 from .AppRunner import AppRunner, ArgumentError
-from direct.task.TaskManagerGlobal import taskMgr
+from bamboo.task.TaskManagerGlobal import taskMgr
 from panda3d.core import Filename
 
 

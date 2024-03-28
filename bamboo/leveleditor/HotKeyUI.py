@@ -24,7 +24,7 @@ class EditHotKeyDialog(wx.Dialog):
         itemPanel = wx.Panel(self.panel)
         hbox = wx.BoxSizer(wx.HORIZONTAL)
         keyList = ['']
-        keyList.extend(base.direct.specialKeys)
+        keyList.extend(base.bamboo.specialKeys)
         self.specialKeyCombo = wx.Choice(itemPanel, -1, choices=keyList)
         self.specialKeyCombo.Bind(wx.EVT_CHOICE, self.onChangeSpecialKey)
         self.keyEntry = wx.TextCtrl(itemPanel, -1, size=(30, 20))
@@ -37,7 +37,7 @@ class EditHotKeyDialog(wx.Dialog):
         vbox.Add(itemPanel)
         self.panel.SetSizer(vbox)
 
-        keyDesc = base.direct.hotKeyMap[self.currKey]
+        keyDesc = base.bamboo.hotKeyMap[self.currKey]
         self.label.SetLabel(keyDesc[0])
         if 'shift' in self.currKey:
             self.modifierRadio.SetStringSelection('Shift')
@@ -52,7 +52,7 @@ class EditHotKeyDialog(wx.Dialog):
             self.specialKeyCombo.Enable(True)
             keyStr = self.currKey
 
-        if keyStr in base.direct.specialKeys:
+        if keyStr in base.bamboo.specialKeys:
             self.keyEntry.SetValue('')
             self.keyEntry.Enable(False)
             self.specialKeyCombo.SetStringSelection(keyStr)
@@ -91,9 +91,9 @@ class EditHotKeyDialog(wx.Dialog):
             newKeyStr = specialKey
 
         if newKeyStr != self.currKey:
-            if newKeyStr in list(base.direct.hotKeyMap.keys()):
+            if newKeyStr in list(base.bamboo.hotKeyMap.keys()):
                 print('a hotkey is to be overridden with %s' % newKeyStr)
-                oldKeyDesc = base.direct.hotKeyMap[newKeyStr]
+                oldKeyDesc = base.bamboo.hotKeyMap[newKeyStr]
                 msg = 'The hotkey is already assigned to %s\n' % oldKeyDesc[0] +\
                       'Do you want to override this?'
 
@@ -101,13 +101,13 @@ class EditHotKeyDialog(wx.Dialog):
                                           wx.YES_NO | wx.NO_DEFAULT | wx.ICON_QUESTION)
                 result = dialog.ShowModal()
                 if result == wx.ID_YES:
-                    base.direct.hotKeyMap[newKeyStr] = base.direct.hotKeyMap[self.currKey]
-                    base.direct.hotKeyMap['__removed__' +
+                    base.bamboo.hotKeyMap[newKeyStr] = base.bamboo.hotKeyMap[self.currKey]
+                    base.bamboo.hotKeyMap['__removed__' +
                                           newKeyStr] = oldKeyDesc
-                    del base.direct.hotKeyMap[self.currKey]
+                    del base.bamboo.hotKeyMap[self.currKey]
             else:
-                base.direct.hotKeyMap[newKeyStr] = base.direct.hotKeyMap[self.currKey]
-                del base.direct.hotKeyMap[self.currKey]
+                base.bamboo.hotKeyMap[newKeyStr] = base.bamboo.hotKeyMap[self.currKey]
+                del base.bamboo.hotKeyMap[self.currKey]
 
         self.Destroy()
 
@@ -120,10 +120,10 @@ class HotKeyPanel(ScrolledPanel):
 
     def updateUI(self):
         vbox = wx.BoxSizer(wx.VERTICAL)
-        keys = list(base.direct.hotKeyMap.keys())
+        keys = list(base.bamboo.hotKeyMap.keys())
         keys.sort()
         for key in keys:
-            keyDesc = base.direct.hotKeyMap[key]
+            keyDesc = base.bamboo.hotKeyMap[key]
             itemPanel = wx.Panel(self)
             sizer = wx.BoxSizer(wx.HORIZONTAL)
             space = wx.StaticText(itemPanel, label='', size=(10, 20))

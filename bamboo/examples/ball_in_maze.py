@@ -9,7 +9,7 @@
 # on the collisions. All of this is put together to simulate a labyrinth-style
 # game
 
-from bamboo.showbase.ShowBase import ShowBase
+from bamboo.showbase.window import Window
 from panda3d.core import CollisionTraverser, CollisionNode
 from panda3d.core import CollisionHandlerQueue, CollisionRay
 from panda3d.core import Material, LRotationf, NodePath
@@ -17,10 +17,10 @@ from panda3d.core import AmbientLight, DirectionalLight
 from panda3d.core import TextNode
 from panda3d.core import LVector3, BitMask32
 from bamboo.gui.onscreen_text import OnscreenText
-from bamboo.interval.MetaInterval import Sequence, Parallel
-from bamboo.interval.LerpInterval import LerpFunc
-from bamboo.interval.FunctionInterval import Func, Wait
-from bamboo.task.Task import Task
+from bamboo.interval.meta_interval import Sequence, Parallel
+from bamboo.interval.lerp_interval import LerpFunc
+from bamboo.interval.function_interval import Func, Wait
+from bamboo.task.task import Task
 import sys
 
 # Some constants for the program
@@ -32,12 +32,12 @@ MAX_SPEED_SQ = MAX_SPEED ** 2  # Squared to make it easier to use lengthSquared
 # Instead of length
 
 
-class BallInMazeDemo(ShowBase):
+class BallInMazeDemo(Window):
 
     def __init__(self):
-        # Initialize the ShowBase class from which we inherit, which will
+        # Initialize the Window class from which we inherit, which will
         # create a window and set up everything we need for rendering into it.
-        ShowBase.__init__(self)
+        Window.__init__(self)
 
         # This code puts the standard title and instruction text on screen
         self.title = \
@@ -54,7 +54,7 @@ class BallInMazeDemo(ShowBase):
         self.accept("escape", sys.exit)  # Escape quits
 
         # Disable default mouse-based camera control.  This is a method on the
-        # ShowBase class from which we inherit.
+        # Window class from which we inherit.
         self.disable_mouse()
         camera.setPosHpr(0, 0, 25, 0, -90, 0)  # Place the camera
 
@@ -157,7 +157,7 @@ class BallInMazeDemo(ShowBase):
         # Finally, we create a CollisionTraverser. CollisionTraversers are what
         # do the job of walking the scene graph and calculating collisions.
         # For a traverser to actually do collisions, you need to call
-        # traverser.traverse() on a part of the scene. Fortunately, ShowBase
+        # traverser.traverse() on a part of the scene. Fortunately, Window
         # has a task that does this for the entire scene once a frame.  By
         # assigning it to self.c_trav, we designate that this is the one that
         # it should call traverse() on each frame.

@@ -16,16 +16,16 @@ although it does send messages that allow a listener to play sounds or
 animations based on walker events.
 """
 
-from direct.directnotify import DirectNotifyGlobal
-from direct.showbase import DirectObject
-from direct.controls.ControlManager import CollisionHandlerRayStart
-from direct.showbase.InputStateGlobal import inputState
-from direct.task.Task import Task
+from bamboo.directnotify import DirectNotifyGlobal
+from bamboo.showbase import DirectObject
+from bamboo.controls.ControlManager import CollisionHandlerRayStart
+from bamboo.showbase.InputStateGlobal import inputState
+from bamboo.task.Task import Task
 from panda3d.core import *
 from panda3d.physics import *
-from direct.extensions_native import Mat3_extensions
-from direct.extensions_native import VBase3_extensions
-from direct.extensions_native import VBase4_extensions
+from bamboo.extensions_native import Mat3_extensions
+from bamboo.extensions_native import VBase3_extensions
+from bamboo.extensions_native import VBase4_extensions
 import math
 
 # import LineStream

@@ -7,10 +7,10 @@ in-depth explanation and an example of how to use this class.
 __all__ = ['DirectScrolledListItem', 'ScrolledList']
 
 from panda3d.core import *
-from direct.showbase import ShowBaseGlobal
+from bamboo.showbase import show_base_global
 from bamboo.gui import gui_globals as DGG
-from direct.directnotify import DirectNotifyGlobal
-from direct.task.Task import Task
+from bamboo.directnotify import direct_notify_global
+from bamboo.task import Task
 from bamboo.gui.frame import *
 from bamboo.gui.button import *
 import sys
@@ -27,7 +27,7 @@ class DirectScrolledListItem(Button):
     ScrolledList, doing so takes care of the highlighting and
     unhighlighting of the list items.
     """
-    notify = DirectNotifyGlobal.directNotify.newCategory(
+    notify = direct_notify_global.directNotify.newCategory(
         "DirectScrolledListItem")
 
     def __init__(self, parent=None, **kw):
@@ -55,7 +55,7 @@ class DirectScrolledListItem(Button):
 
 
 class ScrolledList(Frame):
-    notify = DirectNotifyGlobal.directNotify.newCategory("ScrolledList")
+    notify = direct_notify_global.directNotify.newCategory("ScrolledList")
 
     def __init__(self, parent=None, **kw):
         assert self.notify.debugStateCall(self)

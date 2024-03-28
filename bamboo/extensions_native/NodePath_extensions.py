@@ -488,7 +488,7 @@ def place(self):
     # Don't use a regular import, to prevent ModuleFinder from picking
     # it up as a dependency when building a .p3d package.
     import importlib
-    Placer = importlib.import_module('direct.tkpanels.Placer')
+    Placer = importlib.import_module('bamboo.tkpanels.Placer')
     return Placer.place(self)
 
 
@@ -503,7 +503,7 @@ def explore(self):
     # it up as a dependency when building a .p3d package.
     import importlib
     SceneGraphExplorer = importlib.import_module(
-        'direct.tkwidgets.SceneGraphExplorer')
+        'bamboo.tkwidgets.SceneGraphExplorer')
     return SceneGraphExplorer.explore(self)
 
 
@@ -517,7 +517,7 @@ def rgbPanel(self, cb=None):
     # Don't use a regular import, to prevent ModuleFinder from picking
     # it up as a dependency when building a .p3d package.
     import importlib
-    Valuator = importlib.import_module('direct.tkwidgets.Valuator')
+    Valuator = importlib.import_module('bamboo.tkwidgets.Valuator')
     return Valuator.rgbPanel(self, cb)
 
 
@@ -528,7 +528,7 @@ del rgbPanel
 
 def select(self):
     base.start_direct(f_want_tk=0)
-    base.direct.select(self)
+    base.bamboo.select(self)
 
 
 Dtool_funcToMethod(select, NodePath)
@@ -538,7 +538,7 @@ del select
 
 def deselect(self):
     base.start_direct(f_want_tk=0)
-    base.direct.deselect(self)
+    base.bamboo.deselect(self)
 
 
 Dtool_funcToMethod(deselect, NodePath)
@@ -558,7 +558,7 @@ def showCS(self, mask=None):
     npc = self.findAllMatches('**/+CollisionNode')
     for p in range(0, npc.getNumPaths()):
         np = npc[p]
-        if (mask == None or (np.node().getIntoCollideMask() & mask).getWord()):
+        if mask is None or (np.node().getIntoCollideMask() & mask).getWord():
             np.show()
 
 
@@ -589,8 +589,8 @@ del hideCS
 
 
 def posInterval(self, *args, **kw):
-    from direct.interval import LerpInterval
-    return LerpInterval.LerpPosInterval(self, *args, **kw)
+    from bamboo.interval import lerp_interval
+    return lerp_interval.LerpPosInterval(self, *args, **kw)
 
 
 Dtool_funcToMethod(posInterval, NodePath)
@@ -599,8 +599,8 @@ del posInterval
 
 
 def hprInterval(self, *args, **kw):
-    from direct.interval import LerpInterval
-    return LerpInterval.LerpHprInterval(self, *args, **kw)
+    from bamboo.interval import lerp_interval
+    return lerp_interval.LerpHprInterval(self, *args, **kw)
 
 
 Dtool_funcToMethod(hprInterval, NodePath)
@@ -609,8 +609,8 @@ del hprInterval
 
 
 def quatInterval(self, *args, **kw):
-    from direct.interval import LerpInterval
-    return LerpInterval.LerpQuatInterval(self, *args, **kw)
+    from bamboo.interval import lerp_interval
+    return lerp_interval.LerpQuatInterval(self, *args, **kw)
 
 
 Dtool_funcToMethod(quatInterval, NodePath)
@@ -619,8 +619,8 @@ del quatInterval
 
 
 def scaleInterval(self, *args, **kw):
-    from direct.interval import LerpInterval
-    return LerpInterval.LerpScaleInterval(self, *args, **kw)
+    from bamboo.interval import lerp_interval
+    return lerp_interval.LerpScaleInterval(self, *args, **kw)
 
 
 Dtool_funcToMethod(scaleInterval, NodePath)
@@ -629,8 +629,8 @@ del scaleInterval
 
 
 def shearInterval(self, *args, **kw):
-    from direct.interval import LerpInterval
-    return LerpInterval.LerpShearInterval(self, *args, **kw)
+    from bamboo.interval import lerp_interval
+    return lerp_interval.LerpShearInterval(self, *args, **kw)
 
 
 Dtool_funcToMethod(shearInterval, NodePath)
@@ -639,8 +639,8 @@ del shearInterval
 
 
 def posHprInterval(self, *args, **kw):
-    from direct.interval import LerpInterval
-    return LerpInterval.LerpPosHprInterval(self, *args, **kw)
+    from bamboo.interval import lerp_interval
+    return lerp_interval.LerpPosHprInterval(self, *args, **kw)
 
 
 Dtool_funcToMethod(posHprInterval, NodePath)
@@ -649,8 +649,8 @@ del posHprInterval
 
 
 def posQuatInterval(self, *args, **kw):
-    from direct.interval import LerpInterval
-    return LerpInterval.LerpPosQuatInterval(self, *args, **kw)
+    from bamboo.interval import lerp_interval
+    return lerp_interval.LerpPosQuatInterval(self, *args, **kw)
 
 
 Dtool_funcToMethod(posQuatInterval, NodePath)
@@ -659,8 +659,8 @@ del posQuatInterval
 
 
 def hprScaleInterval(self, *args, **kw):
-    from direct.interval import LerpInterval
-    return LerpInterval.LerpHprScaleInterval(self, *args, **kw)
+    from bamboo.interval import lerp_interval
+    return lerp_interval.LerpHprScaleInterval(self, *args, **kw)
 
 
 Dtool_funcToMethod(hprScaleInterval, NodePath)
@@ -669,8 +669,8 @@ del hprScaleInterval
 
 
 def quatScaleInterval(self, *args, **kw):
-    from direct.interval import LerpInterval
-    return LerpInterval.LerpQuatScaleInterval(self, *args, **kw)
+    from bamboo.interval import lerp_interval
+    return lerp_interval.LerpQuatScaleInterval(self, *args, **kw)
 
 
 Dtool_funcToMethod(quatScaleInterval, NodePath)
@@ -679,8 +679,8 @@ del quatScaleInterval
 
 
 def posHprScaleInterval(self, *args, **kw):
-    from direct.interval import LerpInterval
-    return LerpInterval.LerpPosHprScaleInterval(self, *args, **kw)
+    from bamboo.interval import lerp_interval
+    return lerp_interval.LerpPosHprScaleInterval(self, *args, **kw)
 
 
 Dtool_funcToMethod(posHprScaleInterval, NodePath)
@@ -689,8 +689,8 @@ del posHprScaleInterval
 
 
 def posQuatScaleInterval(self, *args, **kw):
-    from direct.interval import LerpInterval
-    return LerpInterval.LerpPosQuatScaleInterval(self, *args, **kw)
+    from bamboo.interval import lerp_interval
+    return lerp_interval.LerpPosQuatScaleInterval(self, *args, **kw)
 
 
 Dtool_funcToMethod(posQuatScaleInterval, NodePath)
@@ -699,8 +699,8 @@ del posQuatScaleInterval
 
 
 def posHprScaleShearInterval(self, *args, **kw):
-    from direct.interval import LerpInterval
-    return LerpInterval.LerpPosHprScaleShearInterval(self, *args, **kw)
+    from bamboo.interval import lerp_interval
+    return lerp_interval.LerpPosHprScaleShearInterval(self, *args, **kw)
 
 
 Dtool_funcToMethod(posHprScaleShearInterval, NodePath)
@@ -709,8 +709,8 @@ del posHprScaleShearInterval
 
 
 def posQuatScaleShearInterval(self, *args, **kw):
-    from direct.interval import LerpInterval
-    return LerpInterval.LerpPosQuatScaleShearInterval(self, *args, **kw)
+    from bamboo.interval import lerp_interval
+    return lerp_interval.LerpPosQuatScaleShearInterval(self, *args, **kw)
 
 
 Dtool_funcToMethod(posQuatScaleShearInterval, NodePath)
@@ -719,8 +719,8 @@ del posQuatScaleShearInterval
 
 
 def colorInterval(self, *args, **kw):
-    from direct.interval import LerpInterval
-    return LerpInterval.LerpColorInterval(self, *args, **kw)
+    from bamboo.interval import lerp_interval
+    return lerp_interval.LerpColorInterval(self, *args, **kw)
 
 
 Dtool_funcToMethod(colorInterval, NodePath)
@@ -729,8 +729,8 @@ del colorInterval
 
 
 def colorScaleInterval(self, *args, **kw):
-    from direct.interval import LerpInterval
-    return LerpInterval.LerpColorScaleInterval(self, *args, **kw)
+    from bamboo.interval import lerp_interval
+    return lerp_interval.LerpColorScaleInterval(self, *args, **kw)
 
 
 Dtool_funcToMethod(colorScaleInterval, NodePath)

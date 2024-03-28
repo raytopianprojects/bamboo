@@ -1,9 +1,9 @@
 from panda3d.core import *
 from .ClusterMsgs import *
-from direct.distributed.MsgTypes import *
-from direct.directnotify import DirectNotifyGlobal
-from direct.showbase import DirectObject
-from direct.task import Task
+from bamboo.distributed.MsgTypes import *
+from bamboo.directnotify import DirectNotifyGlobal
+from bamboo.showbase import DirectObject
+from bamboo.task import Task
 
 # NOTE: This assumes the following variables are set via bootstrap command line
 # arguments on server startup:

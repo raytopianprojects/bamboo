@@ -1,4 +1,4 @@
-from direct.wxwidgets.WxAppShell import *
+from bamboo.wxwidgets.WxAppShell import *
 import os
 from . import ObjectGlobals as OG
 

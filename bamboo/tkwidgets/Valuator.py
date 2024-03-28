@@ -2,11 +2,11 @@
 
 __all__ = ['Valuator', 'ValuatorGroup', 'ValuatorGroupPanel']
 
-from direct.showbase.DirectObject import *
-from direct.showbase.TkGlobal import *
+from bamboo.showbase.DirectObject import *
+from bamboo.showbase.TkGlobal import *
 from . import WidgetPropertiesDialog
 import Pmw
-from direct.directtools.DirectUtil import getTkColorString
+from bamboo.directtools.DirectUtil import getTkColorString
 from panda3d.core import Vec4
 import sys
 

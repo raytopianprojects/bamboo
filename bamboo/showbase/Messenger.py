@@ -5,17 +5,17 @@
 __all__ = ['Messenger']
 
 
-from .PythonUtil import *
-from direct.directnotify import DirectNotifyGlobal
+from .python_util import *
+from bamboo.directnotify import direct_notify_global
 import types
 import sys
 
-from direct.stdpy.threading import Lock
+from bamboo.stdpy.threading import Lock
 
 
 class Messenger:
 
-    notify = DirectNotifyGlobal.directNotify.newCategory("Messenger")
+    notify = direct_notify_global.directNotify.newCategory("Messenger")
 
     def __init__(self):
         """
@@ -325,7 +325,7 @@ class Messenger:
 
             if taskChain:
                 # Queue the event onto the indicated task chain.
-                from direct.task.TaskManagerGlobal import taskMgr
+                from bamboo.task.TaskManagerGlobal import taskMgr
                 queue = self._eventQueuesByTaskChain.setdefault(taskChain, [])
                 queue.append((acceptorDict, event, sentArgs, foundWatch))
                 if len(queue) == 1:

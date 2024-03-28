@@ -1,5 +1,5 @@
-from direct.showbase.DirectObject import DirectObject
-from direct.directtools.DirectGeometry import *
+from bamboo.showbase.DirectObject import DirectObject
+from bamboo.directtools.DirectGeometry import *
 
 from panda3d.core import NodePath, LineSegs
 

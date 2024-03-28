@@ -7,8 +7,8 @@ created by Doug Hellmann (doughellmann@mindspring.com).
 
 __all__ = ['AppShell']
 
-from direct.showbase.DirectObject import DirectObject
-from direct.showbase.TkGlobal import *
+from bamboo.showbase.DirectObject import DirectObject
+from bamboo.showbase.TkGlobal import *
 import Pmw
 import sys
 from . import Dial

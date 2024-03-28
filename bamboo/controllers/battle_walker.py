@@ -1,6 +1,6 @@
 
-from direct.showbase.InputStateGlobal import inputState
-from direct.task.Task import Task
+from bamboo.showbase.InputStateGlobal import inputState
+from bamboo.task.Task import Task
 from panda3d.core import *
 from . import GravityWalker
 

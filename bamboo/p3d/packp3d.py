@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 
 from panda3d.core import *
-from direct.p3d import Packager
+from bamboo.p3d import Packager
 import glob
 import getopt
 import os
@@ -104,7 +104,7 @@ Options:
 
 
 # Temp hack for debugging.
-# from direct.p3d.AppRunner import dummyAppRunner; dummyAppRunner()
+# from bamboo.p3d.AppRunner import dummyAppRunner; dummyAppRunner()
 
 
 class ArgumentError(Exception):
