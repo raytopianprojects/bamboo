@@ -3,13 +3,12 @@ different parts of the window."""
 
 __all__ = ['ThreeUpShow']
 
+from bamboo.showbase import ShowBase
 
-from . import ShowBase
 
-
-class ThreeUpShow(ShowBase.ShowBase):
+class ThreeUpShow(ShowBase):
     def __init__(self):
-        ShowBase.ShowBase.__init__(self)
+        ShowBase.__init__(self)
 
     def makeCamera(self, win, sort=0, scene=None,
                    displayRegion=(0, 1, 0, 1), stereo=None,
@@ -23,3 +22,8 @@ class ThreeUpShow(ShowBase.ShowBase):
         self.camUR = ShowBase.ShowBase.make_camera(
             self, win, displayRegion=(0, .5, .5, 1), camName='camUR')
         return self.camUR
+
+
+if __name__ == "__main__":
+    a = ThreeUpShow()
+    a.run()

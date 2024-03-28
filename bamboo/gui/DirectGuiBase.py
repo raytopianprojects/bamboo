@@ -50,7 +50,7 @@ Code overview:
     to define options (see 2 above)
 
 5)  Widget components are created via calls to
-    :func:`~DirectGuiBase.createcomponent`.  User can specify aliases and groups
+    :func:`~DirectGuiBase.create_component`.  User can specify aliases and groups
     for each component created.
 
     Aliases are alternate names for components, e.g. a widget may have a
@@ -88,15 +88,15 @@ __all__ = ['DirectGuiBase', 'DirectGuiWidget']
 
 
 from panda3d.core import *
-from direct.showbase import ShowBaseGlobal
-from direct.showbase.ShowBase import ShowBase
-from . import DirectGuiGlobals as DGG
-from .OnscreenText import *
-from .OnscreenGeom import *
-from .OnscreenImage import *
-from direct.directtools.DirectUtil import ROUND_TO
-from direct.showbase import DirectObject
-from direct.task import Task
+from bamboo.showbase import ShowBaseGlobal
+from bamboo.showbase.ShowBase import ShowBase
+import bamboo.gui.DirectGuiGlobals as DGG
+from bamboo.gui.OnscreenText import *
+from bamboo.gui.OnscreenGeom import *
+from bamboo.gui.OnscreenImage import *
+from bamboo.directtools.DirectUtil import ROUND_TO
+from bamboo.showbase import DirectObject
+from bamboo.task import Task
 import sys
 
 if sys.version_info >= (3, 0):
@@ -107,7 +107,7 @@ else:
 guiObjectCollector = PStatCollector("Client::GuiObjects")
 
 
-class DirectGuiBase(DirectObject.DirectObject):
+class DirectGuiBase(DirectObject):
     """Base class of all DirectGUI widgets."""
 
     def __init__(self):
@@ -254,7 +254,7 @@ class DirectGuiBase(DirectObject.DirectObject):
             self.fInit = 1
             for info in self._optionInfo.values():
                 func = info[FUNCTION]
-                if func is not None and func is not DGG.INITOPT:
+                if func is not None and func != DGG.INITOPT:
                     func()
             self.fInit = 0
 
@@ -492,8 +492,8 @@ class DirectGuiBase(DirectObject.DirectObject):
     # Allow index style refererences
     __getitem__ = cget
 
-    def createcomponent(self, componentName, componentAliases, componentGroup,
-                        widgetClass, *widgetArgs, **kw):
+    def create_component(self, componentName, componentAliases, componentGroup,
+                         widgetClass, *widgetArgs, **kw):
         """
         Create a component (during construction or later) for this widget.
         """
@@ -571,7 +571,7 @@ class DirectGuiBase(DirectObject.DirectObject):
         # Get arguments for widget constructor
         if len(widgetArgs) == 1 and type(widgetArgs[0]) == tuple:
             # Arguments to the constructor can be specified as either
-            # multiple trailing arguments to createcomponent() or as a
+            # multiple trailing arguments to create_component() or as a
             # single tuple argument.
             widgetArgs = widgetArgs[0]
         # Create the widget

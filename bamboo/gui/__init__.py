@@ -11,20 +11,20 @@ single module as follows::
    from direct.gui.DirectGui import *
 """
 
-from .OnscreenText import OnscreenText as Text
-from .OnscreenGeom import OnscreenGeom
-from .OnscreenImage import OnscreenImage as Image
-from .DirectFrame import DirectFrame as Frame
-from .DirectButton import *
-from .DirectEntry import *
-from .DirectEntryScroll import *
-from .DirectLabel import *
-from .DirectScrolledList import *
-from .DirectDialog import *
-from .DirectWaitBar import *
-from .DirectSlider import *
-from .DirectScrollBar import *
-from .DirectScrolledFrame import *
-from .DirectCheckButton import *
-from .DirectOptionMenu import *
-from .DirectRadioButton import *
+from bamboo.gui.OnscreenText import OnscreenText as Text
+from bamboo.gui.OnscreenGeom import OnscreenGeom
+from bamboo.gui.OnscreenImage import OnscreenImage as Image
+from bamboo.gui.Frame import Frame
+from bamboo.gui.Button import Button
+from bamboo.gui.Entry import Entry
+from bamboo.gui.EntryScroll import EntryScroll
+from bamboo.gui.Label import Label
+from bamboo.gui.ScrolledList import ScrolledList
+from bamboo.gui.Dialog import Dialog, YesNoDialog, YesNoCancelDialog
+from bamboo.gui.WaitBar import WaitBar
+from bamboo.gui.Slider import Slider
+from bamboo.gui.ScrollBar import ScrollBar
+from bamboo.gui.ScrolledFrame import ScrolledFrame
+from bamboo.gui.CheckButton import CheckButton
+from bamboo.gui.OptionMenu import OptionMenu
+from bamboo.gui.RadioButton import RadioButton

@@ -12,7 +12,7 @@ from direct.gui import DirectGuiGlobals as DGG
 
 class DWBPackageInstaller(DirectWaitBar, PackageInstaller):
     """ This class presents a PackageInstaller that also inherits from
-    DirectWaitBar, so it updates its own GUI as it downloads.
+    WaitBar, so it updates its own GUI as it downloads.
 
     Specify perPackage = True to make the progress bar reset for each
     package, or False (the default) to show one continuous progress

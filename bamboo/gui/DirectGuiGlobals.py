@@ -44,7 +44,7 @@ FrameStyleDict = {'flat': FLAT, 'raised': RAISED, 'sunken': SUNKEN,
                   'texture_border': TEXTURE_BORDER,
                   }
 
-# Orientation of DirectSlider and DirectScrollBar
+# Orientation of Slider and ScrollBar
 HORIZONTAL = 'horizontal'
 VERTICAL = 'vertical'
 VERTICAL_INVERTED = 'vertical_inverted'
@@ -70,7 +70,7 @@ B3PRESS = PGButton.getPressPrefix() + MouseButton.three().getName() + '-'
 B1RELEASE = PGButton.getReleasePrefix() + MouseButton.one().getName() + '-'
 B2RELEASE = PGButton.getReleasePrefix() + MouseButton.two().getName() + '-'
 B3RELEASE = PGButton.getReleasePrefix() + MouseButton.three().getName() + '-'
-# For DirectEntry widgets
+# For Entry widgets
 OVERFLOW = PGEntry.getOverflowPrefix()
 ACCEPT = PGEntry.getAcceptPrefix() + KeyboardButton.enter().getName() + '-'
 ACCEPTFAILED = PGEntry.getAcceptFailedPrefix(
@@ -78,7 +78,7 @@ ACCEPTFAILED = PGEntry.getAcceptFailedPrefix(
 TYPE = PGEntry.getTypePrefix()
 ERASE = PGEntry.getErasePrefix()
 CURSORMOVE = PGEntry.getCursormovePrefix()
-# For DirectSlider and DirectScrollBar widgets
+# For Slider and ScrollBar widgets
 ADJUST = PGSliderBar.getAdjustPrefix()
 
 
@@ -100,7 +100,7 @@ _OPT_DEFAULT = 0
 _OPT_VALUE = 1
 _OPT_FUNCTION = 2
 
-# DirectButton States:
+# Button States:
 BUTTON_READY_STATE = PGButton.SReady       # 0
 BUTTON_DEPRESSED_STATE = PGButton.SDepressed   # 1
 BUTTON_ROLLOVER_STATE = PGButton.SRollover    # 2

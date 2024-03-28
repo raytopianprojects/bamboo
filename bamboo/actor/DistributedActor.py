@@ -4,7 +4,7 @@ __all__ = ['DistributedActor']
 
 from direct.distributed import DistributedNode
 
-from . import Actor
+from bamboo.actor.Actor import Actor
 
 
 class DistributedActor(DistributedNode.DistributedNode, Actor):

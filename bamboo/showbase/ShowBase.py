@@ -32,22 +32,22 @@ built-in scope.
 
 """
 
-from . import AppRunnerGlobal
-from . import SfxPlayer
-from . import DirectObject
-from direct.showbase import ExceptionVarDump
+from bamboo.showbase import AppRunnerGlobal
+from bamboo.showbase import SfxPlayer
+from bamboo.showbase.DirectObject import DirectObject
+from bamboo.showbase import ExceptionVarDump
 import importlib
 import atexit
 import time
-from direct.task import Task
-from direct.showbase.BufferViewer import BufferViewer
-from direct.interval import IntervalManager
-from .EventManagerGlobal import eventMgr
-from .JobManagerGlobal import jobMgr
-from direct.task.TaskManagerGlobal import taskMgr
-from .BulletinBoardGlobal import bulletinBoard
-from .MessengerGlobal import messenger
-from direct.directnotify.DirectNotifyGlobal import directNotify, giveNotify
+from bamboo.task import Task
+from bamboo.showbase.BufferViewer import BufferViewer
+from bamboo.interval import IntervalManager
+from bamboo.showbase.EventManagerGlobal import eventMgr
+from bamboo.showbase.JobManagerGlobal import jobMgr
+from bamboo.task.TaskManagerGlobal import taskMgr
+from bamboo.showbase.BulletinBoardGlobal import bulletinBoard
+from bamboo.showbase.MessengerGlobal import messenger
+from bamboo.directnotify.DirectNotifyGlobal import directNotify, giveNotify
 __all__ = ['ShowBase', 'WindowControls']
 
 # This module redefines the builtin import function with one
@@ -58,8 +58,8 @@ __all__ = ['ShowBase', 'WindowControls']
 from panda3d.core import *
 from panda3d.direct import throw_new_frame, init_app_for_gui
 from panda3d.direct import storeAccessibilityShortcutKeys, allowAccessibilityShortcutKeys
-from . import DConfig
-from . import Loader
+from bamboo.showbase import DConfig
+from bamboo.showbase import Loader
 
 
 # Register the extension methods for NodePath.
@@ -77,8 +77,8 @@ builtins.config = DConfig
 # from PythonUtil import *
 
 if __debug__:
-    from direct.showbase import GarbageReport
-    from direct.directutil import DeltaProfiler
+    from bamboo.showbase import GarbageReport
+    from bamboo.directutil import DeltaProfiler
     from . import OnScreenDebug
 
 
@@ -91,7 +91,7 @@ def exitfunc():
 # Now ShowBase is a DirectObject.  We need this so ShowBase can hang
 # hooks on messages, particularly on window-event.  This doesn't
 # *seem* to cause anyone any problems.
-class ShowBase(DirectObject.DirectObject):
+class ShowBase(DirectObject):
     #: The deprecated `.DConfig` interface for accessing config variables.
     config = DConfig
     notify = directNotify.newCategory("ShowBase")
@@ -1102,7 +1102,7 @@ class ShowBase(DirectObject.DirectObject):
                 self.win.setClearStencil(oldClearStencil)
 
             flag = self.config.GetBool('show-frame-rate-meter', False)
-            if self.app_runner is not None and self.appRunner.allowPythonDev:
+            if self.app_runner is not None and self.app_runner.allowPythonDev:
                 # In an allow_python_dev p3d application, we always
                 # start up with the frame rate meter enabled, to
                 # provide a visual reminder that this flag has been
@@ -1119,7 +1119,7 @@ class ShowBase(DirectObject.DirectObject):
         Sets up a task that calls python 'sleep' every frame.  This is a simple
         way to reduce the CPU usage (and frame rate) of a panda program.
         """
-        if (self.clientSleep == amount):
+        if self.clientSleep == amount:
             return
         self.clientSleep = amount
         if (amount == 0.0):
@@ -1756,8 +1756,8 @@ class ShowBase(DirectObject.DirectObject):
         the currently-known mouse position.  Useful if the mouse
         pointer is invisible for some reason.
         """
-        mouseViz = render2d.attachNewNode('mouseViz')
-        lilsmiley = loader.loadModel('lilsmiley')
+        mouseViz = self.render2d.attachNewNode('mouseViz')
+        lilsmiley = self.loader.loadModel('lilsmiley')
         lilsmiley.reparentTo(mouseViz)
 
         aspectRatio = self.get_aspect_ratio()
@@ -1936,10 +1936,10 @@ class ShowBase(DirectObject.DirectObject):
         return self.physicsMgrEnabled
 
     def updateManagers(self, state):
-        dt = globalClock.getDt()
-        if (self.particleMgrEnabled == 1):
+        dt = self.clock.getDt()
+        if self.particleMgrEnabled == 1:
             self.particleMgr.doParticles(dt)
-        if (self.physicsMgrEnabled == 1):
+        if self.physicsMgrEnabled == 1:
             self.physicsMgr.doPhysics(dt)
         return Task.cont
 
@@ -2602,12 +2602,12 @@ class ShowBase(DirectObject.DirectObject):
                 Transform2SG('oobe2cam'))
             self.oobe2cam.node().setNode(self.oobeCameraTrackball.node())
 
-            self.oobeVis = loader.loadModel(
+            self.oobeVis = self.loader.loadModel(
                 'models/misc/camera', okMissing=True)
             if not self.oobeVis:
                 # Sometimes we have default-model-extension set to
                 # egg, but the file might be a bam file.
-                self.oobeVis = loader.loadModel(
+                self.oobeVis = self.loader.loadModel(
                     'models/misc/camera.bam', okMissing=True)
             if not self.oobeVis:
                 self.oobeVis = NodePath('oobeVis')
@@ -2645,11 +2645,11 @@ class ShowBase(DirectObject.DirectObject):
             #    self.cam_node.setLens(self.cam_lens)
             self.oobeCamera.reparentTo(self.hidden)
             self.oobeMode = 0
-            bboard.post('oobeEnabled', False)
+            self.bboard.post('oobeEnabled', False)
         else:
-            bboard.post('oobeEnabled', True)
+            self.bboard.post('oobeEnabled', True)
             try:
-                cameraParent = localAvatar
+                cameraParent = self.localAvatar
             except:
                 # Make oobeCamera be a sibling of wherever camera is now.
                 cameraParent = self.camera.getParent()
@@ -2974,14 +2974,14 @@ class ShowBase(DirectObject.DirectObject):
         Returns:
             A `~direct.task.Task` that can be awaited.
         """
-        globalClock.setMode(ClockObject.MNonRealTime)
-        globalClock.setDt(1.0 / float(fps))
+        self.clock.setMode(ClockObject.MNonRealTime)
+        self.clock.setDt(1.0 / float(fps))
         t = self.taskMgr.add(self._movie_task, namePrefix + '_task')
         t.frameIndex = 0  # Frame 0 is not captured.
         t.numFrames = int(duration * fps)
         t.source = source
         t.outputString = namePrefix + '_%0' + repr(sd) + 'd.' + format
-        t.setUponDeath(lambda state: globalClock.setMode(ClockObject.MNormal))
+        t.setUponDeath(lambda state: self.clock.setMode(ClockObject.MNormal))
         return t
 
     def _movie_task(self, state):
@@ -3186,8 +3186,8 @@ class ShowBase(DirectObject.DirectObject):
             self.run = self.wx_run
             self.taskMgr.run = self.wx_run
             builtins.run = self.wx_run
-            if self.appRunner:
-                self.appRunner.run = self.wx_run
+            if self.app_runner:
+                self.app_runner.run = self.wx_run
 
         else:
             # Leave Panda in charge of the main loop.  This is
@@ -3340,7 +3340,7 @@ class ShowBase(DirectObject.DirectObject):
 
         :rtype: panda3d.core.NodePath
         """
-        return loader.loadModel("models/misc/xyzAxis.bam")
+        return self.loader.loadModel("models/misc/xyzAxis.bam")
 
     def __do_start_direct(self):
         if self.__direct_started:
@@ -3364,8 +3364,8 @@ class ShowBase(DirectObject.DirectObject):
         main loop, so we can't allow the application to do it.
         """
 
-        if self.appRunner is None or self.appRunner.dummy or \
-                (self.appRunner.interactiveConsole and not self.appRunner.initialAppImport):
+        if self.app_runner is None or self.app_runner.dummy or \
+                (self.app_runner.interactiveConsole and not self.app_runner.initialAppImport):
             self.taskMgr.run()
 
 

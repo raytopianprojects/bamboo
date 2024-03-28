@@ -4,7 +4,6 @@ __all__ = ['FourState']
 
 from direct.directnotify import DirectNotifyGlobal
 # import DistributedObject
-from . import ClassicFSM
 from . import State
 
 

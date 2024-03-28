@@ -10,10 +10,10 @@ __all__ = ['Task', 'TaskManager',
            'cont', 'done', 'again', 'pickup', 'exit',
            'sequence', 'loop', 'pause']
 
-from direct.directnotify.DirectNotifyGlobal import *
-from direct.showbase import ExceptionVarDump
-from direct.showbase.PythonUtil import *
-from direct.showbase.MessengerGlobal import messenger
+from bamboo.directnotify.DirectNotifyGlobal import *
+from bamboo.showbase import ExceptionVarDump
+from bamboo.showbase.PythonUtil import *
+from bamboo.showbase.MessengerGlobal import messenger
 import types
 import random
 import importlib

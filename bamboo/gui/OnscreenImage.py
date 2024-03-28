@@ -7,7 +7,7 @@ this class.
 __all__ = ['OnscreenImage']
 
 from panda3d.core import *
-from direct.showbase.DirectObject import DirectObject
+from bamboo.showbase.DirectObject import DirectObject
 import sys
 
 if sys.version_info >= (3, 0):

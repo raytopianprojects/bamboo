@@ -1,1 +1,1 @@
-from .actor import Actor, DistributedActor
+from bamboo.showbase.ShowBase import ShowBase

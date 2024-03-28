@@ -2,10 +2,10 @@
 
 __all__ = ['directNotify', 'giveNotify']
 
-from . import DirectNotify
+from bamboo.directnotify import DirectNotify
 
 #: The global :class:`~.DirectNotify.DirectNotify` object.
-directNotify = DirectNotify.DirectNotify()
+directNotify = DirectNotify()
 
 #: Shorthand function for adding a DirectNotify category to a given class
 #: object.  Alias of `.DirectNotify.DirectNotify.giveNotify`.

@@ -27,7 +27,7 @@ class PackageInstaller(DirectObject):
     downloadFinished().
 
     Also see DWBPackageInstaller, which does exactly this, to add a
-    DirectWaitBar GUI.
+    WaitBar GUI.
 
     """
 

@@ -3,7 +3,7 @@
 __all__ = ['OnscreenGeom']
 
 from panda3d.core import *
-from direct.showbase.DirectObject import DirectObject
+from bamboo.showbase.DirectObject import DirectObject
 import sys
 
 if sys.version_info >= (3, 0):

@@ -14,7 +14,7 @@ adds itself to this module's scope when instantiated."""
 import sys
 __all__ = []
 
-from .ShowBase import ShowBase, WindowControls
+from bamboo.showbase.ShowBase import ShowBase, WindowControls
 from direct.directnotify.DirectNotifyGlobal import directNotify, giveNotify
 from panda3d.core import VirtualFileSystem, Notify, ClockObject, PandaSystem
 from panda3d.core import ConfigPageManager, ConfigVariableManager

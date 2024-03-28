@@ -70,7 +70,7 @@ class Transitions:
 
     def loadFade(self):
         if self.fade is None:
-            # We create a DirectFrame for the fade polygon, instead of
+            # We create a Frame for the fade polygon, instead of
             # simply loading the polygon model and using it directly,
             # so that it will also obscure mouse events for objects
             # positioned behind it.
@@ -368,7 +368,7 @@ class Transitions:
 
     def loadLetterbox(self):
         if not self.letterbox:
-            # We create a DirectFrame for the fade polygon, instead of
+            # We create a Frame for the fade polygon, instead of
             # simply loading the polygon model and using it directly,
             # so that it will also obscure mouse events for objects
             # positioned behind it.

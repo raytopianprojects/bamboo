@@ -10,7 +10,4 @@ For more information about the task system, consult the
 :ref:`tasks-and-event-handling` page in the programming manual.
 """
 
-from .Timer import Timer
-from .Task import Task
-from .MiniTask import MiniTaskManager, MiniTask
-from .TaskManagerGlobal import taskMgr
+
