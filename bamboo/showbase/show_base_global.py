@@ -13,7 +13,7 @@ adds itself to this module's scope when instantiated."""
 
 import sys
 __all__ = []
-
+from bamboo.showbase.window import Window, WindowControls
 from bamboo.directnotify.direct_notify_global import directNotify, giveNotify
 from panda3d.core import VirtualFileSystem, Notify, ClockObject, PandaSystem
 from panda3d.core import ConfigPageManager, ConfigVariableManager

@@ -6,11 +6,11 @@
 # This tutorial shows how to load, play, and manipulate sounds
 # and sound intervals in a panda project.
 
-from bamboo.showbase.ShowBase import ShowBase
+from bamboo.showbase import Window
 from panda3d.core import NodePath, TextNode
 from panda3d.core import PointLight, AmbientLight
-from bamboo.gui.OnscreenText import OnscreenText
-from bamboo.showbase.DirectObject import DirectObject
+from bamboo.gui import OnscreenText
+from bamboo.showbase import DirectObject
 from bamboo.interval.SoundInterval import SoundInterval
 from bamboo.gui.DirectSlider import DirectSlider
 from bamboo.gui.DirectButton import DirectButton

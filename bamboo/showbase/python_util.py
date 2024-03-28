@@ -1567,7 +1567,7 @@ safeReprNotify = None
 
 def _getSafeReprNotify():
     global safeReprNotify
-    from bamboo.directnotify.DirectNotifyGlobal import directNotify
+    from bamboo.directnotify.direct_notify_global import directNotify
     safeReprNotify = directNotify.newCategory("safeRepr")
     return safeReprNotify
 

@@ -4,12 +4,12 @@ __all__ = ['AnimControlInterval']
 
 from panda3d.core import *
 from panda3d.direct import *
-from bamboo.directnotify.DirectNotifyGlobal import *
+from bamboo.directnotify.direct_notify_global import *
 from . import interval
 import math
 
 
-class AnimControlInterval(Interval.Interval):
+class AnimControlInterval(interval.Interval):
     # create AnimControlInterval DirectNotify category
     notify = directNotify.newCategory('AnimControlInterval')
 
