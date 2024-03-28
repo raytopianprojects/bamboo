@@ -109,6 +109,8 @@ class Window(DirectObject):
         including this instance itself (under the name ``base``).
         """
 
+
+
         #: Set if the want-dev Config.prc variable is enabled.  By default, it
         #: is set to True except when using Python with the -O flag.
         self.a2dpBottom = None
@@ -357,6 +359,14 @@ class Window(DirectObject):
         #: `.Loader.Loader` object.
         self.loader = loader.Loader(self)
         self.graphics_engine.setDefaultLoader(self.loader.loader)
+
+        self.load_model = self.loader.load_model
+        self.load_font = self.loader.load_font
+        self.load_shader = self.loader.load_shader
+        self.load_texture = self.loader.load_texture
+        self.load_cube_map = self.loader.load_cube_map
+        self.load_3d_texture = self.loader.load_3d_texture
+
 
         #: The global event manager, as imported from `.EventManagerGlobal`.
         self.eventMgr = eventMgr
